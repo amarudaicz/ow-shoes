@@ -1,0 +1,195 @@
+<%- include('partials/head', {siteTitle:"Carrito", cssRoute:"/cart/app.css"})  %> 
+
+
+
+<body>
+    <%- include('partials/header')  %> 
+    
+    <main>
+
+        <div class="main_container">
+
+            <div class="title_cart">
+                <h1>Carrito</h1>
+    
+            </div>
+    
+            <section class="container_section">
+
+                <div class="container_item">
+                    
+                    <div class="item">
+    
+                        <div class="container_img-producto">
+                            <img class="img_producto" src="/images/DETAIL-PRODUCT-AIR.TRAINER1.webp" alt="">
+                        </div>
+            
+                        <div class="container_datos">
+        
+                            <h2>NIKE AIR TRAINER SP</h2>
+                            <span>"Ligth smoke grey</span>
+            
+                            <h3>Talle: 10us</h3>
+            
+                            <div class="details_product">
+                                <p>Precio 15000$ </p>  
+        
+                                <div class="input_group">
+                                    <input type="tel" multiple name="cantidad" list="cantidad" placeholder="1" required >
+                                    <label for="cantidad">Cantidad</label>
+                                   
+                                    <datalist id="cantidad">
+                                      <option value="1"></option>
+                                      <option value="2"></option>
+                                      <option value="3"></option>
+                                    </datalist>
+                                </div>
+        
+            
+            
+                            </div>
+            
+                            <input class="button_eliminar" type="button" value="Eliminar">
+            
+            
+            
+                        </div>
+            
+            
+            
+                    </div>
+    
+                </div>
+
+                <div class="container_item">
+                    
+                    <div class="item">
+    
+                        <div class="container_img-producto">
+                            <img class="img_producto" src="/images/DETAIL-PRODUCT-AIR.TRAINER1.webp" alt="">
+                        </div>
+            
+                        <div class="container_datos">
+        
+                            <h2>NIKE AIR TRAINER SP</h2>
+                            <span>"Ligth smoke grey</span>
+            
+                            <h3>Talle: 10us</h3>
+            
+                            <div class="details_product">
+                                <p>Precio 15000$ </p>  
+        
+                                <div class="input_group">
+                                    <input type="tel" multiple name="cantidad" list="cantidad" placeholder="1" required >
+                                    <label for="cantidad">Cantidad</label>
+                                   
+                                    <datalist id="cantidad">
+                                      <option value="1"></option>
+                                      <option value="2"></option>
+                                      <option value="3"></option>
+                                    </datalist>
+                                </div>
+        
+            
+            
+                            </div>
+            
+                            <input class="button_eliminar" type="button" value="Eliminar">
+            
+            
+            
+                        </div>
+            
+            
+            
+                    </div>
+    
+                </div>
+
+                <div class="resumen_desktop">
+
+                    <h3>Resumen del pedido</h3>
+                    
+                    <div class="container_resumen">
+                        
+                        <div class="details_resumen">
+                            <h4>Subtotal</h4> 
+                            <h5>Envio</h5>
+                            <h5>Productos</h5>
+                            <h5>Total</h5>
+                        </div>
+    
+                        <div class="details_resumen">
+                            <h4>30000$</h4> 
+                            <h5>-</h5>
+                            <h5>2</h5>
+                            <h5>30000</h5>
+                        </div>
+                    </div>
+
+
+                    <div class="buttons_checkout checkout_desktop">
+    
+                        <input class="volver" type="button" value="Volver a la tienda">
+                        
+                        
+                        <input class="pagar" type="button" value="Pagar">
+        
+        
+                    </div>
+                </div>
+
+               
+
+
+
+    
+                
+            </section>
+
+            <section class="resumen">
+
+                <div class="total">
+                    <h2>TOTAL = 30000$</h2>
+                    
+                </div>
+    
+    
+                <div class="buttons_checkout">
+    
+                    <input class="volver" type="button" value="Volver a la tienda">
+                    
+                    
+                    <input class="pagar" type="button" value="Pagar">
+    
+    
+                </div>
+
+            </section>
+            
+            
+
+        </div>    
+
+
+
+
+
+
+    </main>
+
+
+
+
+
+    
+    
+    
+    
+
+
+
+    <script src="./js/app.js"></script>
+    <%- include('partials/footer')  %> 
+</body>
+</html>

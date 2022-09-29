@@ -1,0 +1,9 @@
+POST http://localhost:3000/login/iniciar
+Content-Type:application/json
+
+{
+    "email":"CR7@CR7.com",
+    "password":"123"
+}
+
+###

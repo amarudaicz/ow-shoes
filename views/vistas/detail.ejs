@@ -1,0 +1,131 @@
+  <%- include('partials/head', {siteTitle:`Detail Product ${id}`, cssRoute:"/detail/app.css"})  %> 
+
+
+<body>
+
+  <%- include('partials/header')  %> 
+  
+  <main>
+    <div class="main__container">
+
+      <% productos.forEach(p => { %>
+        <% if (p.id === id) { %>
+
+          <div class="container__title info">
+            <h2>
+              <%= p.title  %>  <br />
+              <%= p.subtitle %>
+            </h2>
+            <p>
+             
+              <%= p.descripcion %> 
+            </p>
+          </div>
+      
+          <div class="container__block">
+            <div class="col col1">
+              <img
+                class="col__img"
+                src= <%=p.imgDt1 %> 
+                alt=""
+              />
+            </div>
+      
+            <div class="col col2">
+              <img
+                class="col__img"
+                src= <%= p.imgDt2 %> 
+                alt=""
+              />
+            </div>
+      
+            <div class="col col3">
+              <img
+                class="col__img"
+                src= <%= p.imgDt3%> 
+                alt=""
+              />
+            </div>
+          </div>
+      
+          <div class="container__block">
+            <div class="col col1">
+              <img
+                class="col__img"
+                src= <%= p.imgDt4 %> 
+                alt=""
+              />
+            </div>
+      
+            <div class="col col2">
+              <img
+                class="col__img"
+                src= <%= p.imgDt5 %> 
+                alt=""
+              />
+            </div>
+      
+            <div class="col col3">
+              <p>
+                <%= p.descripcion2 %> 
+              </p>
+            </div>
+      
+          </div>
+      
+          <div class="container__full-width">
+            <div class="img__full-width">
+              <img src=<%=p.imgDt6 %> alt="">
+            </div>
+          </div>
+      
+      
+          <div class="container__details">
+            <h4> 
+              <%= p.title  %>  <br />
+              <%= p.subtitle  %> 
+            </h4>
+      
+            <div class="container__pricing">
+              <span class="original"><%= p.precio  %>$ </span>
+              <span class="offer"><%= p.precioOfer %>$ </span>
+            </div>
+      
+            <div class="container__size">
+              <label for="size">Talle:</label>
+              <input type="tel" multiple name="size" id="size" list="sizes" placeholder="10us" required >
+
+              <datalist id="sizes">
+                <option value="10us"></option>
+                <option value="8us"></option>
+
+              </datalist>
+            </div>
+      
+      
+            <div class="container__buttons">
+              <a href="#">
+                <input type="button" value="Comprar">
+              </a>
+              
+              <a href="#">
+                <input type="button" value="Volver atras">
+              </a>
+            </div>
+          </div>
+
+
+
+         
+        <% } %>
+        
+
+
+      <% }) %>
+
+        
+    </div>
+    
+    <%- include('partials/footer')  %> 
+  </main>
+</body>
