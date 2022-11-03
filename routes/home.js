@@ -1,12 +1,15 @@
+
+
+
 const express = require('express');
 const router = express.Router();
-const getIndex = require('../controllers/home')
+const {getIndex,getHome} = require('../controllers/home')
+const {authToken} = require('../middleware/authToken');
+const { checkOrders } = require('../middleware/checkOrders');
 
 
 
-router.get('/', getIndex);
-
-
+router.get('/' ,getHome);
 
 module.exports = router;
 

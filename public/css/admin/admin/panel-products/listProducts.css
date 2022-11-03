@@ -1,0 +1,10 @@
+.container-list {
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.575);
+  border-radius: 15px;
+  padding: 20px 10px;
+}
+.container-list h2 {
+  margin: 10px 0;
+  color: rgb(49, 49, 49);
+}

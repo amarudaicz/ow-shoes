@@ -1,0 +1,319 @@
+.main_container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.logo_login {
+  width: auto;
+  display: grid;
+  height: 130px;
+  place-items: center;
+}
+.logo_login img {
+  width: 220px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.title_form {
+  text-align: center;
+  margin: 0;
+}
+
+.container_form {
+  margin: 30px 0;
+}
+
+.form_login {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 30px;
+}
+@media (min-width: 992px) {
+  .form_login {
+    width: 50%;
+    margin: 0 auto;
+    row-gap: 50px;
+  }
+}
+
+.form_group {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs_group {
+  display: flex;
+  column-gap: 10px;
+}
+
+.button_submmit {
+  font-size: 1rem;
+  color: white;
+  background: #E14521;
+  width: max-content;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: none;
+}
+
+.button_reset-pass {
+  font-size: 1rem;
+  color: white;
+  background: #14213D;
+  width: max-content;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: none;
+}
+
+.registrate {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.separador {
+  width: 200px;
+  margin: 0 auto 20px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.separador .linea {
+  width: 45%;
+  height: 1px;
+  background: black;
+}
+
+.iniciar_ga {
+  width: 230px;
+  margin: 20px auto auto;
+}
+@media (min-width: 992px) {
+  .iniciar_ga {
+    margin: 10px auto 0 auto;
+  }
+}
+
+.container_svg-icon {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  border-radius: 25px;
+  color: #353535;
+}
+.container_svg-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.container_desktop {
+  display: initial;
+}
+@media (min-width: 992px) {
+  .container_desktop {
+    display: flex;
+    height: 100vh;
+  }
+}
+
+.left_inputs {
+  padding: 50px 0;
+  transition: all 1s;
+}
+@media (min-width: 992px) {
+  .left_inputs {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.rigth_image {
+  display: none;
+}
+@media (min-width: 992px) {
+  .rigth_image {
+    display: initial;
+    width: 50%;
+    height: 100%;
+  }
+}
+
+.contenedor_imagen {
+  width: 100%;
+  height: 100%;
+}
+.contenedor_imagen img {
+  z-index: 999;
+  position: fixed;
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#container_error-login {
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.container_back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+.container_back i {
+  font-size: 50px;
+  color: #14213D;
+}
+
+/** ESTILOS REGISTRO*/
+.iniciar_session {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.register {
+  position: absolute;
+  translate: 90%;
+}
+
+#container_errors {
+  width: 300px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+}
+
+#container_errors-login {
+  width: 300px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+}
+
+.notification-error {
+  padding: 5px;
+  color: #121212;
+  border-radius: 5px;
+  background: rgba(197, 98, 98, 0.5960784314);
+}
+
+.notification-succes {
+  padding: 5px;
+  color: #121212;
+  border-radius: 5px;
+  background: rgba(106, 197, 98, 0.5960784314);
+}
+
+/* From uiverse.io by @G4b413l */
+.form_group {
+  position: relative;
+}
+.form_group span {
+  color: #999;
+  padding-left: 5px;
+}
+
+.form_control {
+  font-size: 1rem;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 200px;
+  border: none;
+  border-bottom: 1px solid #515151;
+  background: transparent;
+}
+@media (min-width: 992px) {
+  .form_control {
+    width: 300px;
+  }
+}
+
+.form_control:focus {
+  outline: none;
+}
+
+label {
+  color: #999;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.form_control:focus ~ label,
+.form_control:valid ~ label {
+  top: -20px;
+  font-size: 14px;
+  color: #E14521;
+}
+
+.bar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.bar:before,
+.bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #E14521;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.bar:before {
+  left: 50%;
+}
+
+.bar:after {
+  right: 50%;
+}
+
+.form_control:focus ~ .bar:before,
+.form_control:focus ~ .bar:after {
+  width: 50%;
+}
+
+.highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.form_control:focus ~ .highlight {
+  animation: form_controlHighlighter 0.3s ease;
+}
+
+@keyframes form_controlHighlighter {
+  from {
+    background: #E14521;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}

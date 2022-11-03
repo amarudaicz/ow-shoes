@@ -1,102 +1,143 @@
-const fs = require('fs');
 const { encrypt, compare } = require('../utils/handlePassword');
 const { tokenSign } = require('../utils/handleJwt');
-const  handleHttpError  = require('../utils/handleHttpError');
-const { readDb, writeDb } = require('../utils/handleFs');
-const { log } = require('console');
-const { emitWarning } = require('process');
+const handleHttpError = require('../utils/handleHttpError');
+const { compareSync } = require('bcryptjs');
+const { doQuery } = require('../mysql/login');
+const calculate = require('../utils/calculate');
+
+
+
 
 const getLogin = (req, res) => {
-  res.render('login', { autorized: true });
+
+  res.render('login');
+
 };
 
-const getRegister = (req, res)=>{
 
-  res.render('register')
+const getRegister = (req, res) => {
 
+  res.render('register');
+};
+
+
+
+const isAuth = (req, res)=>{
+  try {
+  
+    res.json(true)
+    
+  } catch (err) {
+    
+    console.log(err);
+    res.status(500).send('Server error');
+
+  }
 }
+
+
+
 
 const registerControl = async (req, res) => {
   try {
-    let { body } = req;
+
+    const { name, email, password, age } = req.body;
+
+    const query = `SELECT * FROM users WHERE email = ? `;
+    const user = await doQuery(query, email);
+
+    if (user.length !== 0) 
+    return handleHttpError(res, 'User already exists', 401);
+
+    const passwordHash = await encrypt(password);
+
+
+    const insertQuery = `INSERT INTO users (name, email, age, role, password) VALUES (?, ?, ?, ?, ?);`;
+    const newUser = await doQuery(insertQuery, [
+      name,
+      email,
+      calculate(age),
+      'user',
+      passwordHash,
+    ]);
+
+    const succes = 'Usuario registrado correctamente '
+
+    const payload = {
+      id:newUser.insertId,
+      name
+    }
+
+    const token = tokenSign(payload);
     
-    const password = await encrypt(body.password);
-    // let users = fs.readFileSync('./utils/users.json', 'utf-8');
-    // let usersParse = JSON.parse(users);
-    let users = readDb();
-    console.log(users);
+    res.json({ token, succes});
 
-    let newUser = {
-      nombre: body.nombre,
-      email: body.email,
-      edad:body.edad,
-      id: body.id,
-      role: "user",
-      password,
-      auth: true,
-    };
-
-    const data = {
-      token: tokenSign(newUser),
-      user: newUser,
-    };
-
-    users.push(data);
-
-    // fs.writeFileSync('./utils/users.json', JSON.stringify(usersParse, null, 2));
-    writeDb(users);
-
-    res.send(data);
   } catch (err) {
+    console.log(err);
     handleHttpError(res, 'ERROR_EN_REGISTER_CONTROL');
   }
 };
 
-const getUsers = (req, res) => {
-  try {
-    const users = fs.readFileSync('./utils/users.json', 'utf-8');
 
-    res.setHeader('contentType', 'text/json');
-    res.send(users);
+
+
+const loginControl = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const user = await doQuery(`SELECT * FROM users WHERE email = ? OR name = ? ; `, [email, email]);
+
+    if (user.length === 0) 
+    return handleHttpError(res, 'Email or user invalid')
+  
+    const hashPassword = user[0].password;
+    const checkPassword = compareSync(password, hashPassword); //DEVUELVE TRUE SI LA COMPARACION ES EXITOSA
+
+    if (!checkPassword)
+    return handleHttpError(res, 'Contraseña Incorrecta', 401);
+      
+    const payload = {
+      id:user[0].id,
+      name:user[0].name
+    }
+
+    const token = tokenSign(payload)
+
+    res.cookie('token.ow', token, {})
+
+    res.json({token, log:true});
+
+  } catch (err) {
+
+    console.log(err);
+    handleHttpError(res, 'ERROR_EN_LOGIN_CONTROL');
+
+  }
+};
+
+
+
+
+
+const getUser = (req, res) => {
+  try {
+    
+    const {user} = req
+
+    res.json(user)
+
   } catch (err) {
     handleHttpError(res, 'ERROR_EN_GET_USERS');
   }
 };
 
-const loginControl = async (req, res) => {
-  try {
-    const { body } = req;
-
-    let users = readDb();
-
-    users.forEach( async (element, i, thisArg) => {
-      if (element.user.email === body.email) {
-        const hashPassword = element.user.password;
-
-        const check = await compare(body.password, hashPassword); //DEVUELVE TRUE SI LA COMPARACION ES EXITOSA
- 
-        if (!check) {
-          handleHttpError(res, 'PASSWORD_INVALID', 401);
-          return;
-
-        }else{
-
-          const data = {
-            token: tokenSign(element.user),
-            user:element.user
-          };
-  
-          res.redirect('/home')
-        }
-
-      }
-    });
 
 
-  } catch (err) {
-    console.log(err);
-    handleHttpError(res, 'ERROR_EN_LOGIN_CONTROL');
-  }
+module.exports = {
+  getLogin,
+  getUser,
+  registerControl,
+  getRegister,
+  loginControl,
+  isAuth
 };
-
-module.exports = { getLogin, getUsers, registerControl,getRegister, loginControl };

@@ -1,0 +1,25 @@
+
+<!-- GRID TIENDA -->
+<div class="tienda">
+    <h3 class="ult-lanzamientos">Ultimos lanzamientos</h3>
+
+    <section class="grid__tienda">
+        <% products.forEach(p => { %>
+            <div class="grid__tienda--producto">
+                <img src=<%= p.img_tienda %> />
+                <span>"<%= p.title  %> "</span>
+                <h3> <%= p.subtitle  %> </h3>
+
+                <div class="block__inputs--tienda">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <a href=<%= `http://localhost:3000/products/?id=${p.id}` %> >
+                        <input type="button" value="Comprar" />
+                    </a>
+                </div>
+                
+            </div> 
+         
+        <% }) %>
+
+    </section>
+</div>

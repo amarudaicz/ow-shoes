@@ -1,0 +1,101 @@
+<%- include ('../partials/head', {siteTitle:"Inicio", cssRoute:"home/app.css"}) %> 
+
+  <body>
+
+    <%- include ('../partials/header')  %> 
+
+
+    <!--BANER PRINCIPAL-->
+    <section class="banner banner__principal">
+      <h1 id="text">
+        RUNNING <br />
+        CITY <br />
+        MOUNTAIN
+      </h1>
+      
+      <input type="button" value="Ver tienda" id="btn_ver-tienda"/>
+    </section>
+    <!-- BP -->
+    
+    <!--BANER PEGASUS-->
+    <section class="banner banner__pegasus">
+      <div class="banner__pega--title">
+        <h2>Pegasus 39</h2>
+      </div>
+
+      <div class="banner__pega--input">
+        <input
+          class="banner__vermas banner__btn"
+          type="button"
+          value="Ver mas"
+        />
+        <input
+          class="banner__comprar banner__btn"
+          type="button"
+          value="Comprar"
+        />
+      </div>
+    </section>
+
+
+
+    <!-- GRID TIENDA -->
+
+    <%- include('../partials/lanzamientos')  %> 
+
+    
+    <!--BANNER SNKRS-->
+    <div class="snkrs">
+      <h3>Conoce nuestros negocios</h3>
+
+      <section class="banner banner__snkrs">
+        <div class="snkrs__input"></div>
+      </section>
+
+      <div class="snkrs__title">
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br />
+          Distinctio doloremque sapiente odio, sunt illo alias deserunt, esse
+          earum numquam quam dolorum voluptatem id obcaecati in impedit debitis
+          ullam, omnis repellendus!
+        </p>
+        <h3><span>OW</span> SHOES</h3>
+        <input type="button" value="Ver sucursales" />
+      </div>
+    </div>
+    
+    <div class="sport__genero" id="sport">
+      <h3>Segui tus deportes y entrenamientos</h3>
+
+      <div class="contenedor__sport">
+        <section class="sport__section">
+          <div class="sport__back sport__mujer">
+            <!-- <img src="/images/sport-desktop-nike.webp" alt=""> -->
+          </div>
+          <div class="sport__info">
+            <h4>Calzado de mujer</h4>
+            <span>Para los entrenamientos y deportes</span>
+            <input type="button" value="Ver mas" />
+          </div>
+        </section>
+
+        <section class="sport__section">
+          <div class="sport__back sport__hombre"></div>
+
+          <div class="sport__info">
+            <h4>Calzado de hombre</h4>
+            <span>Las mejores zapatillas para el deporte</span>
+            <input type="button" value="Ver mas" />
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <%- include ('../partials/footer')  %> 
+
+
+
+
+
+  </body>
+</html>

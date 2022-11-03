@@ -1,0 +1,69 @@
+<%- include ('../partials/head', {siteTitle:"Edit Product", cssRoute:"admin/app.css"}) %> 
+
+<body>
+  <%- include ('../partials/adminPanel/dashboard') %> 
+      
+<main>
+    <%- include ('../partials/adminPanel/header') %> 
+
+          
+    <div class="container-title">
+
+      <h2>Editar Producto</h2>
+      <p>Edita los campos que desees cambiar y luego guarda los cambios</p>
+
+    </div>
+
+    
+    <%- include ('../partials/adminPanel/formEditProduct.ejs')  %>    
+
+    
+    <%- include ('../partials/adminPanel/formInsertVariatons.ejs')  %>     
+    
+    <div class="container-list">
+      <h2 id="btnListProducts">Variaciones del producto</h2>
+      <div class="container-ul">
+        <ul class="ul-item">
+          <li class="li-item">
+            <div class="container-product"></div>
+          </li>
+        </ul>
+      </div>
+    
+      <div class="container-table">
+        <table class="table-data">
+    
+          <tbody class="t-body">
+            <tr class="cols-table">
+              <th class="col-data">SKU</th>
+              <th class="col-data">Id</th>
+              <th class="col-data">Precio</th>
+              <th class="col-data">Atributos</th>
+              <th class="col-data">Valor</th>
+              <th class="col-data">Stock</th>
+              <th class="col-data">Unidades vendidas</th>
+            </tr>
+          </tbody>
+    
+    
+        </table>
+      </div>
+    </div>
+    
+    
+</main>
+
+
+<script src="/js/utils/querySelector.js"></script>
+
+<script src="/js/admin/templates/templateChoseVariation.js"></script>
+<script src="/js/utils/convertNumber.js"></script>
+<script src="/js/admin/templates/templateListVariations.js"></script>
+<script src="/js/admin/fetch/fetchListVariantsProducts.js"></script>
+<script src="/js/admin/fetch/fetchInsertVariants.js"></script>
+<script src="/js/admin/fetch/setingVariants.js"></script>
+<script src="/js/admin/animations/acordeonAnimations.js"></script>
+  
+</body>
+  
+</html>

@@ -5,9 +5,12 @@ const bcryptjs = require('bcryptjs')
  * @param {*} passwordPlain 
  */
 const encrypt = async (passwordPlain) => {
-    const hash = await bcryptjs.hash( passwordPlain, 10)
-    return hash
+    const saltRound = 10
+    const salt = await bcryptjs.genSalt(saltRound);
 
+    const hash = await bcryptjs.hash(passwordPlain, salt)
+
+    return hash
 };
 
 /**

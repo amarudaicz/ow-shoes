@@ -21,5 +21,12 @@ fs.readdirSync(PATH_ROUTES).filter((file) =>{
 })
 
 
+// router.get('*', (req, res)=>{
+
+//     res.redirect('/home')
+
+// })
+
+
 module.exports = router;
 

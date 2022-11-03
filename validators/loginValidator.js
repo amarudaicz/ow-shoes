@@ -1,44 +1,36 @@
-const { check } = require("express-validator");
-const { validateResult } = require("../utils/handleValidator");
-
+const { check } = require('express-validator');
+const { validateResult } = require('../utils/handleValidator');
 
 const validatorRegisterUser = [
-    check('name')
-    .exists()
-    .notEmpty()
-    .isLength({min:3, max:99}),
+  check('name').notEmpty().withMessage('El nombre no debe estar vacio'),
 
-    check('email')
-    .exists()
-    .notEmpty()
-    .isEmail(),
+  check('email')
+    .isEmail()
+    .withMessage('Completar el campo Email'),
 
-    check('password')
-    .exists()
+  check('age').notEmpty().withMessage('Completar el campo Edad'),
+
+  check('password')
     .notEmpty()
-    .isLength({min:3, max:15}),
+    .withMessage('Completar el campo Contraseña')
+    .isLength({ max: 30, min: 8 })
+    .withMessage('La contraseña tener una longitud minima de 8 caracteres'),
     
-    (req, res, next) => {
-      validateResult(req, res, next);
-    },
+    
+  (req, res, next) => {
+    validateResult(req, res, next);
+  },
+
 ];
 
-const validatorLogin = [
-  
-    check('email')
-    .exists()
-    .notEmpty()
-    .isEmail(),
+const validatorLoginUser = [
+  check('email').exists().notEmpty().isEmail(),
 
-    check('password')
-    .exists()
-    .notEmpty()
-    .isLength({min:3, max:15}),
-    
-    (req, res, next) => {
-      validateResult(req, res, next);
-    },
+  check('password').exists().notEmpty().isLength({ min: 3, max: 15 }),
+
+  (req, res, next) => {
+    validateResult(req, res, next);
+  },
 ];
 
-
-module.exports = {validatorRegisterUser, validatorLogin};
+module.exports = { validatorRegisterUser, validatorLoginUser };

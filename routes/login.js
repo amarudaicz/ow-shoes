@@ -1,32 +1,29 @@
 const express = require('express');
 const router = express.Router();
-const { getLogin, getRegister, getUsers, registerControl, loginControl } = require('../controllers/login');
-const { encrypt, compare } = require('../utils/handlePassword');
-const { tokenSign, verifyToken } = require('../utils/handleJwt');
-const authMiddleware = require('../middleware/session')
-const userPermisos = require('../middleware/userPermisos')
-const fs = require('fs');
+const {
+  getLogin,
+  getRegister,
+  getUser,
+  registerControl,
+  loginControl,
+  isAuth,
+} = require('../controllers/login');
 
-
-// router.post('/up', passport.authenticate('local', {
-    //     succesRedirect:'/home',
-    //     failureRedirect:'/login'
-// }))
+const {authToken} = require('../middleware/authToken');
+const { checkOrders } = require('../middleware/checkOrders');
+const { validatorRegisterUser } = require('../validators/loginValidator');
 
 
 router.get('/', getLogin);
 
+router.get('/register-view', getRegister);
 
-router.get('/register', getRegister);
+router.get('/getUser', authToken , getUser);
 
+router.get('/isAuth', authToken, checkOrders, isAuth);
 
+router.post('/register', validatorRegisterUser, registerControl);
 
-router.get('/getUser', authMiddleware, userPermisos(['user', 'admin']) ,getUsers);
-
-router.post('/register', registerControl);
-
-router.post('/iniciar', loginControl )
-
- 
+router.post('/go', loginControl);
 
 module.exports = router;

@@ -1,44 +1,54 @@
-const jsonwebtoken = require('jsonwebtoken')
-const jwtSecret = 'masterKey'
+const jsonwebtoken = require('jsonwebtoken');
 
 /**
- * Pasar el objeto del usuario 
- * @param {*} users 
+ * Pasar el objeto del usuario
+ * @param {*} users
  */
-const tokenSign = (user) => {
-    const sign = jsonwebtoken.sign(
-        {
-            id:user.id,//PAILOAD
-            role:user.role,//PAILOAD
-            name:user.name,//PAILOAD
 
-        },
-        jwtSecret,//SECRET
-        {
-            expiresIn:'6h'
-        }
-    )
+const tokenSign = (payload) => {
 
-    return sign
+  const sign = jsonwebtoken.sign(
 
-}
+    payload,
 
+    process.env.SECRET_JWT,
+
+    {
+      expiresIn: '1d',
+    }
+
+  );
+
+  return sign;
+};
 
 /**
  * PASAR EL TOKEN DE SESSION OSEA EL JWT
- * @param {*} tokenJwt 
- * @returns 
+ * @param {*} tokenJwt
+ * @returns
  */
+
 const verifyToken = (tokenJwt) => {
-    try {
+  try {
 
-        let decoded = jsonwebtoken.verify(tokenJwt, jwtSecret)
+    let decoded = jsonwebtoken.verify(tokenJwt, process.env.SECRET_JWT);
 
-        return decoded
+    return decoded; 
+    
+  } catch (err) {
+    return false;
 
-    } catch (err) {
-        return null
-    }
-}
+  }
 
-module.exports = {tokenSign, verifyToken}
+};
+
+module.exports = { tokenSign, verifyToken };
+
+
+
+
+
+
+
+
+
