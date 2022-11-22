@@ -1,0 +1,26 @@
+
+
+<div class="container-form">
+  <h2>Crear variaciones para el producto <%=product.title%></h2>
+
+  <form id="formSendVariations" action="/admin/insert-variations" method="post">
+
+    <div class="form-group">
+
+      <label for="values">Selecciona los talles para este producto</label>
+      <div class="container-values" id="container-sizes"> </div>
+    </div> 
+    
+    
+    
+    <input type="number" hidden name="product_id" id="idProduct" value=<%= product.id %>>
+
+    <input type="text" hidden name="table1" value="products_sizes">
+    <input type="text" hidden name="table2" value="products_colors">
+    
+    <input type="button" id="sendVariations" value="Crear variaciones">
+    <input type="button" id="btnAddColor" value="Añadir variacion de color">
+    
+  </form>
+
+</div>

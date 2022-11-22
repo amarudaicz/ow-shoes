@@ -1,0 +1,261 @@
+<%- include('../partials/head', {siteTitle:product.title + ' ' + product.subtitle, cssRoute:"/detail/app.css"})  %> 
+
+
+
+<body>
+  <%- include('../partials/header')  %> 
+  
+  <main>
+    <div class="main__container">
+
+          <div class="container__title info">
+            <h2>
+              <%= product.title  %>  <br />
+              <%= product.subtitle %>
+            </h2>
+            <p>
+             
+              <%= product.descripcion_1 %> 
+            </p>
+          </div>
+      
+          <div class="container__block">
+            <div class="col col1">
+              <img
+                class="col__img"
+                src="/<%=product.detail_images[0]%>" 
+                alt=""
+              />
+            </div>
+      
+            <div class="col col2">
+              <img
+                class="col__img"
+                src="/<%=product.detail_images[1]%>" 
+                alt=""
+              />
+            </div>
+      
+            <div class="col col3">
+              <img
+                class="col__img"
+                src="/<%=product.detail_images[2]%>" 
+                alt=""
+              />
+            </div>
+          </div>
+      
+          <div class="container__block">
+            <div class="col col1">
+              <img
+                class="col__img"
+                src="/<%=product.detail_images[3]%>" 
+
+                alt=""
+              />
+            </div>
+      
+            <div class="col col2">
+              <img
+                class="col__img"
+                src="/<%=product.detail_images[4]%>" 
+
+                alt=""
+              />
+            </div>
+      
+            <div class="col col3">
+              <p>
+                <%= product.descripcion_2 %> 
+              </p>
+            </div>
+      
+          </div>
+      
+          <div class="container__full-width">
+            <div class="img__full-width">
+              
+              <img
+              class="col__img"
+              src="/<%=product.detail_images[5]%>" 
+
+              alt=""
+            />
+            </div>
+          </div>
+      
+      
+          <div class="container__details">
+
+            <div class="details-left">
+
+              <h4 class="title-product"> 
+                <%=product.title %> <br> 
+                "<%= product.subtitle  %>" 
+              </h4>
+        
+              <div class="container__pricing">
+        
+                <span class="offer">
+                  <span >$<%= product.price_offer%>,00 </span>
+                </span>
+                
+              </div>
+              
+              <hr class="separador-price">
+
+  
+              <form class="form_comprar" action="/cart/buy" method="post">
+
+                <!--COLORES SWATCHES-->
+                <div class="product-color-swatches">
+
+                  <div>
+                    <p style="text-align:start;"> Elije el color:</p>
+                  </div>
+
+                  <div class="btn-group"> 
+
+                    <% if (colorSwatches.length === 1 ) { %>
+
+                      <label class="product-swatch product-swatch-color active" for="colorProduct<%=colorSwatches[0].color_id%>" > 
+                              
+                        <input style="display:none;" required class="input-color" value="<%=colorSwatches[0].color_id%>" checked name="color_id" id="colorProduct<%=colorSwatches[0].color_id%>" autocomplete="off" type="radio" >
+    
+                        <span class="color-swatch-name">
+                          <%=colorSwatches[0].color_arg%> 
+                          
+                          <span class="us-value">
+                            <%=colorSwatches[0].color_us%>
+                          </span>
+
+                        </span>
+                          
+                      </label>
+
+                    <% } else { %>
+
+                      <% colorSwatches.forEach((element) => { %>
+  
+                        <label class="product-swatch product-swatch-color" for="colorProduct<%=element.color_id%>" > 
+                              
+                            <input style="display:none;" required class="input-color" value="<%=element.color_id%>" name="color_id" data-info="<%= element.color_arg%>" id="colorProduct<%=element.color_id%>" autocomplete="off" type="radio" >
+                          
+                            <span class="color-swatch-name">
+                              <%=element.color_arg%> 
+                              
+                            </span>
+                            
+                            <span class="us-value">
+                              <%=element.color_us%>
+                            </span>
+                              
+                          </label>
+  
+  
+                      <% }) %>
+   
+
+                      <% } %> 
+                  </div>
+
+                </div>
+                
+                <!--SIZES SWATCHES-->
+                <div class="product-size-swatches">
+
+                  <div>
+                   <p style="text-align:start;"> Elije el talle:</p>
+                  </div>
+
+                  <div class="btn-group" id="group-swatches"> </div>
+                  
+                </div>
+  
+                
+                <div class="container-quantity">
+
+                  <span>Cantidad:</span> 
+                  <select name="quantity" id="quantityProduct">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                  </select>  
+
+                </div>
+
+
+                <hr width="70%">
+
+                <div class="product-selected">
+
+                  <p style="padding: 25px 0; width: 70%;"> 
+                    <span class="selected-item">
+                      <span>Color: <b> <span class="selected-color"> </span> </b> </span>
+
+
+                      <span >Talle:  <b>  <span class="selected-size">No seleccionado </span> </b> </span>
+                    </span>
+
+                    <span class="selected-item-stock">
+
+
+                    </span>
+                  </p>
+
+                </div>
+
+                <hr width="70%">
+                
+                
+                <div class="container__buttons">
+                  <input type="number" name="productModelId" id="idProductModel" hidden value=<%=product.id%> >
+
+                  <input type="button" value="Agregar al carrito" id="btnBuyProduct">
+                  <a href="/home">
+                    <input type="button" value="Volver atras">
+                  </a>
+                </div>
+
+              </form>
+
+
+
+            </div>
+
+
+            <div class="algoACAAAAAA">
+
+
+              
+            </div>
+      
+          </div>  
+
+    </div>
+      
+    <!--TEMPLATES-->
+    <script src="/js/detail-product/templates/templateSizeSwatches.js"></script>
+   
+    <!--SERVICIO FETCH-->
+    <script src="/fetchProducts.js"></script>
+      
+    <!--FETCH FRONT-->
+    <script src="/js/detail-product/fetch/buyProduct.js"></script>
+
+    
+    <!---->
+    <script src="/js/detail-product/animations/choseSwatches.js"></script>
+    <script src="/js/alertNotUser.js" ></script>
+    <script src="/js/app.js"></script>
+    
+    
+    <%- include('../partials/footer')  %> 
+
+
+  </main>
+</body>

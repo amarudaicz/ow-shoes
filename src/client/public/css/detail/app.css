@@ -1,0 +1,269 @@
+.main__container {
+  width: 95%;
+  height: max-content;
+  margin: 0 auto;
+  padding-top: 90px;
+}
+
+.container__block {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+@media (min-width: 992px) {
+  .container__block {
+    flex-wrap: nowrap;
+    padding: 20px 0;
+  }
+}
+
+.info {
+  text-align: center;
+  padding: 15px;
+}
+.info h2 {
+  margin: 20px 0;
+  font-size: 2em;
+}
+.info p {
+  padding: 0 10%;
+  font-size: 1.2em;
+}
+
+.col {
+  width: 50%;
+  height: auto;
+  display: grid;
+  place-items: center;
+  padding: 15px;
+}
+@media (min-width: 992px) {
+  .col {
+    width: 500px;
+  }
+}
+
+.col3 {
+  width: 70%;
+  text-align: center;
+  line-height: 22px;
+  font-size: 1.2em;
+}
+@media (min-width: 992px) {
+  .col3 {
+    width: 500px;
+  }
+}
+
+.col__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.full-width {
+  justify-content: center;
+}
+
+.col__full-width {
+  width: 100%;
+}
+
+.container__full-width {
+  width: 100%;
+  height: 250px;
+  padding: 15px;
+}
+@media (min-width: 992px) {
+  .container__full-width {
+    padding: 20px 15px;
+    height: max-content;
+  }
+}
+
+.img__full-width {
+  width: 100%;
+  height: 100%;
+}
+.img__full-width img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container__details {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  padding: 30px 0;
+}
+@media (min-width: 992px) {
+  .container__details {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 992px) {
+  .details-left {
+    width: 50%;
+  }
+}
+
+.title-product {
+  margin-bottom: 15px;
+  font-size: 2em;
+  text-align: start;
+}
+
+.container__pricing {
+  font-size: 1.2em;
+  text-align: start;
+}
+.container__pricing .original {
+  text-decoration: line-through;
+  color: rgba(0, 0, 0, 0.695);
+}
+
+.separador-price {
+  margin: 20px 0;
+  width: 70%;
+}
+
+
+
+.btn-group {
+  margin: 10px 0 20px 0;
+  text-align: start;
+}
+
+.product-swatch {
+  box-shadow: inset 0 3px 5px rgb(0 0 0 / 13%);
+  font-size: 14px;
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+  width: 70px;
+  border: 0.5px solid rgb(133, 133, 133);
+  transition: all 0.5s;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+
+.product-swatch span {
+  display: block;
+  color: #333;
+}
+
+.product-swatch .us-value {
+  padding-top: 2px;
+  border-top:1px solid #eeeeee;
+  color: #666666;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.product-swatch:hover {
+  background: #d4d4d4;
+}
+
+.input-size-active, .input-color-active  {
+  border: 1px solid black;
+  background: #e0e0e0;
+}
+
+.swatch-out-stock span {
+  color: #8b8b8b !important;
+}
+
+.swatch-out-stock{
+  border: 0.5px solid rgb(158, 158, 158);
+  background: url(https://drifters.com.ar/img/disabled.png) center center no-repeat;
+  background-size: 100% 100%;
+  opacity: 0.8;
+}
+
+.container-quantity {
+  margin-bottom: 25px;
+  text-align: start;
+}
+.container-quantity #quantityProduct {
+  width: 50px;
+}
+
+#quantityProduct:focus {
+  transition: all 0.5s;
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.08), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.container__buttons {
+  display: flex;
+  column-gap: 10px;
+  margin: 30px 0;
+}
+
+.container__buttons input {
+  padding: 8px 10px;
+  border: none;
+  background: #E14521;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.container__buttons input:hover {
+  background: grey;
+}
+
+#btnBuyProduct{
+  width: 200px;
+  text-transform: uppercase;
+  font-weight: 700;
+  background: #1E1B17;
+
+}
+
+.inputs_group {
+  margin-bottom: 30px;
+}
+
+
+
+
+.selected-color{
+  margin: 0 20px 0 0 ;
+ 
+  
+}
+
+
+.selected-size{
+  
+  margin: 0 20px 0 0 ;
+
+}
+
+.selected-item-stock{
+}
+
+.check-stock{
+  margin: 0 0 0 8px;
+  font-size: 15px;
+
+}
+
+
+
+.text-succes{
+  color:#3c763d;
+}
+
+.text-danger{
+  color:#a94442;
+}

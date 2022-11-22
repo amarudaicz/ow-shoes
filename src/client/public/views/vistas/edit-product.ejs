@@ -1,0 +1,200 @@
+<%- include ('../partials/head', {siteTitle:"Edit Product", cssRoute:"admin/app.css"}) %> 
+
+<body>
+  <%- include ('../partials/adminPanel/dashboard') %> 
+      
+<main>
+    <%- include ('../partials/adminPanel/header') %> 
+
+          
+    <div class="container-title">
+
+      <h2>Editar Producto</h2>
+      <p>Edita los campos que desees cambiar y luego guarda los cambios</p>
+
+    </div>
+
+    
+    <%- include ('../partials/adminPanel/formEditProduct.ejs')  %>    
+
+    
+
+    <div class="container-edit-images container-form">
+
+      <h2>Imagenes del producto</h2>
+
+      <form action="/admin/insert-image-detail" enctype="multipart/form-data" method="POST" class="form-edit-product form-detail-mages">
+
+        <div class="load-files">
+
+          
+          <div class="form-group">
+            
+            <p style="font-weight: bold;">Imagenes detalle, estas imagenes se mostraran en el detalle de cada producto</p>
+
+            <label for="images">Selecciona tus imagenes</label>
+            <input type="file" required multiple name="img-detail-product">
+
+          </div>
+
+          <% if (product.detail_images) { %>
+            <div class="current-images">
+  
+              <% if (product.detail_images.length === 0) { %>
+                <p > Parece que no hay imagenes para este producto! </p>
+              <% } %>
+  
+              <% product.detail_images.forEach(element => { %>
+  
+                <div class="container-image">
+                  <img src="/<%=element%> " class="img-product" width="100px" alt="">
+                </div>
+               
+              <% }) %>
+            </div>
+           
+          <% } %>
+        </div>
+
+              
+        <div class="inputs-group ">
+          <input type="submit" value="Guardar" id="" class="btn-submmit" />
+        </div>
+          
+        <input type="number" name="id" value=<%=product.id%> hidden >
+      </form>
+
+
+      <!--SINGLE IMAGE-->
+      <form action="/admin/insert-image-thumbnail" enctype="multipart/form-data" method="POST" class="form-edit-product form-detail-images">
+
+        <div class="load-files">
+
+          <div class="form-group">
+            <p style="font-weight: bold;">Imagen thumbail, esta imagen se mostrará en la tienda </p>
+            <label for="img-thumbnail-product">
+              Selecciona tus imagenes
+            </label>
+            <input
+              required
+              type="file"
+              name="img-thumbnail-product"
+              id="image-thumbnail-new-product"
+            />
+          </div>
+
+          <% if (product.detail_images) { %>
+
+
+            <div class="current-images">
+  
+              <% if (product.thumbnail_image === '') { %>
+                <p > Parece que no hay imagenes para este producto </p>
+              <% } %>
+  
+  
+                <div class="container-image">
+                  <img src="/<%=product.thumbnail_image%> " class="img-product" width="200px" alt="">
+                </div>
+               
+            </div>
+
+          <% } %>
+
+
+        </div>
+
+        <div class="inputs-group ">
+          <input type="submit" value="Guardar" id="" class="btn-submmit " />
+        </div>
+
+        <input type="number" name="id" value=<%=product.id%> hidden >
+
+      </form>
+
+    </div>
+
+    <%- include ('../partials/adminPanel/formInsertVariatons.ejs')  %>     
+
+
+    
+    <div class="container-list">
+      <h2 id="btnListProducts">Variaciones del producto</h2>
+
+      <div class="container-filters">
+
+        <div class="container-search">
+          <label for="atributte">
+            Filtrar por
+          </label>
+
+          <select name="attribute" id="selectFilter">
+            <option value="sizes_guide">talle</option>
+            <option value="colors_guide">color</option>
+            <option value="sku">sku</option>
+            <option value="id">id</option>
+            <option value="price">precio</option>
+            
+          </select>
+
+          <input type="search" id="searchFilter" placeholder="Ingrese un valor">
+
+          <input type="button" id="applyFilter" value="Filtrar">
+        </div>
+
+
+      </div>
+
+
+      <div class="container-table">
+     
+        <table class="table-data">
+    
+          <tbody class="t-body list-variants">
+    
+            <tr class="cols-table">
+              <th class="col-data"> </th>
+              <th class="col-data">SKU</th>
+              <th class="col-data">Id</th>
+              <th class="col-data">Precio</th>
+              <th class="col-data">Talle</th>
+              <th class="col-data">Color</th>
+              <th class="col-data">Stock</th>
+              <th class="col-data">Unidades vendidas</th>
+              <th class="col-data"> </th>
+            </tr>
+
+            
+          </tbody>
+          
+    
+        </table>
+      </div>
+    </div>
+    
+    
+</main>
+
+
+<script src="/js/utils/querySelector.js"></script>
+<script src="/js/admin/animations/deleteItemAnimation.js"></script>
+
+<script src="/fetchAdmin.js"></script>
+<script src="\js\login\utils\handles.js"></script>
+
+<script src="/js/admin/fetch/fetchUpdateProductModel.js"></script>
+
+<script src="/js/admin/templates/templateChoseVariation.js"></script>
+<script src="/js/admin/templates/templateLoaderlist.js"></script>
+
+<script src="/js/utils/convertNumber.js"></script>
+
+<script src="/js/admin/templates/templateProductsVariants.js"></script>
+
+<script src="/js/admin/fetch/fetchListVariantsProducts.js"></script>
+<script src="/js/admin/fetch/fetchInsertVariants.js"></script>
+<script src="/js/admin/animations/acordeonAnimations.js"></script>
+  
+</body>
+  
+</html>

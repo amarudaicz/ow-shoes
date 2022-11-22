@@ -1,0 +1,96 @@
+<div class="container-form">
+
+    <h2 id="btnEditProduct" class="btn-expand-acordeon">Editando el producto <%= product.title %> </h2>
+
+    <form class="form-new-product" id="formUpdateProductModel" method="post" action="/admin/edit-product" >
+          <div class="inputs-left">
+
+              <div class="form-group acordeon">
+                <label>Nombre producto</label>
+                <input
+                  required
+                  type="text"
+                  name="title"
+                  value="<%= product.title %> "
+                  id="name-new-product"
+                  class="form-control"
+                />
+        
+              </div>
+        
+              <div class="form-group acordeon">
+                <label>Subtitulo</label>
+                <input
+                  required
+                  type="text"
+                  name="subtitle"
+                  value="<%=product.subtitle%>"
+                  class="form-control"
+                  id="subtitle-new-product"
+                />
+        
+              </div>
+        
+        
+              <div class="form-group acordeon">
+                <label>Precio actual</label>
+                <input
+                  required
+                  type="number"
+                  name="price"
+                  value="<%=product.price%>"
+                  id="price-new-product"
+                  class="form-control"
+                />
+        
+              </div>
+        
+              <div class="form-group acordeon">
+                <label>Precio anterior</label>
+                <input
+                  required
+                  type="number"
+                  name="price_offer"
+                  value="<%=product.price_offer%>"
+
+                  id="previous-price-new-product"
+                  class="form-control"
+                />
+        
+              </div>
+
+          </div>
+
+          <div class="textarea-rigth">
+
+              <div class="form-group acordeon">
+                <label>Descripcion 1</label>
+
+                <input style="height: 100px ;" type="textarea" name="descripcion_1" value="<%=product.descripcion_1%>" id="description-1">                  
+              </div>
+        
+              <div class="form-group acordeon">
+                <label>Descripcion 2</label>
+
+                <input style="height: 100px;" type="textarea" name="descripcion_2" value="<%=product.descripcion_2%>" id="description-1">                  
+              </div>
+        
+          </div>
+
+
+
+          
+
+          <input type="number" name="id" value=<%=product.id%> hidden >
+  
+        
+      <div class="inputs-group acordeon">
+
+        <input type="button" value="Guardar" id="btnUpdateProductModel" class="button-submmit" />
+
+      </div>
+
+
+    </form>
+
+</div>

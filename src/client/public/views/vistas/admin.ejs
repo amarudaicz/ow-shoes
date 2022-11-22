@@ -1,0 +1,32 @@
+<%- include ('../partials/head', {siteTitle:"Admin Panel", cssRoute:"admin/app.css"}) %> 
+
+  <body>
+
+    <%- include ('../partials/adminPanel/dashboard') %> 
+      
+    <main>
+
+      <%- include ('../partials/adminPanel/header') %> 
+
+
+        
+      <% if (page === 'home') { %>
+
+        <%- include ('../partials/adminPanel/home') %> 
+       
+        
+      <% } else if(page === 'products-panel'){ %>
+
+        <%- include ('../partials/adminPanel/products-panel') %>   
+
+      <% } %>
+
+
+
+
+    </main>
+
+    
+  </body>
+  
+</html>

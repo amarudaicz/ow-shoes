@@ -1,0 +1,88 @@
+<div class="container-title">
+  <h2>Dashboard</h2>
+  <p>Toda la informacion de tus productos estara por aqui!</p>
+</div>
+
+<div class="container-form">
+  <h2 id="btnAddProduct" class="btn-expand-acordeon">
+    Agregar un nuevo producto
+  </h2>
+
+  <form
+    class="form-new-product"
+    id="formInsertProduct"
+    method="POST"
+    action="/admin/insert-product"
+  >
+  
+    <div class="inputs-left">
+      <div class="form-group acordeon">
+        <label>Nombre producto</label>
+        <input
+          required
+          type="text"
+          name="title"
+          id="name-new-product"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group acordeon">
+        <label>Subtitulo</label>
+        <input
+          required
+          type="text"
+          name="subtitle"
+          class="form-control"
+          id="subtitle-new-product"
+        />
+      </div>
+
+      <div class="form-group acordeon">
+        <label>Precio actual</label>
+        <input
+          required
+          type="number"
+          name="price"
+          id="price-new-product"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group acordeon">
+        <label>Precio anterior</label>
+        <input
+          required
+          type="number"
+          name="priceOffer"
+          id="previous-price-new-product"
+          class="form-control"
+        />
+      </div>
+    </div>
+
+    <div class="textarea-rigth">
+      <div class="form-group acordeon">
+        <label>Descripcion 1</label>
+        <textarea name="description1" id="description-1" rows="5"></textarea>
+      </div>
+
+      <div class="form-group acordeon">
+        <label>Descripcion 2</label>
+        <textarea name="description2" id="description-2" rows="5"></textarea>
+      </div>
+    </div>
+
+ 
+
+    <div class="inputs-group acordeon">
+      <input
+        type="submit"
+        value="Guardar"
+        id="btnSubmitProduct"
+        class="button-submmit"
+      />
+    </div>
+  </form>
+
+</div>

@@ -1,5 +1,5 @@
 node_modules
-src
+sass
 gulpfile.js
 package-lock.json
 .env
