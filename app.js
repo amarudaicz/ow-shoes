@@ -27,11 +27,11 @@ app.use('/', require('./src/server/routes'));
 
 
 //app.set?
-app.set('views', __dirname + '/src/client/public/views/vistas');
 app.set('view engine', 'ejs');
+app.set('views', __dirname + '/src/client/public/views/vistas');
 app.set('port', process.env.PORT );
 
-
+// WXw*CUULd]6eWVH=
 
 
 
@@ -43,5 +43,3 @@ app.listen(app.get('port'), ( ) => {
 });
 
 
-
- 
