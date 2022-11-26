@@ -14,7 +14,7 @@ const getHome = async (req, res) => {
 
   } catch (err) {
     console.log(err);
-    handleHttpError(res, 'ERROR_EN_GET_INDEX');
+    handleHttpError(res, err);
   }
 
 };
