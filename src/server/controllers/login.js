@@ -109,7 +109,7 @@ const loginControl = async (req, res) => {
   } catch (err) {
 
     console.log(err);
-    handleHttpError(res, 'ERROR_EN_LOGIN_CONTROL');
+    handleHttpError(res, err);
 
   }
 };
@@ -126,7 +126,7 @@ const getUser = (req, res) => {
     res.json(user)
 
   } catch (err) {
-    handleHttpError(res, 'ERROR_EN_GET_USERS');
+    handleHttpError(res, err);
   }
 };
 
