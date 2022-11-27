@@ -1,3 +1,4 @@
+const publicUrl = 'https://ow-shoes.vercel.app/'
 
 
 const fetchGetProductsModels = async () => {
