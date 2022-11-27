@@ -1,5 +1,15 @@
 
 
+const fetchGetProductsModels = async () => {
+  const urlFetch = publicUrl + `admin/list-products `;
+
+  const resServer = await fetch(urlFetch, {
+    method: 'GET',
+  });
+
+  return resServer.json();
+};
+
 (async function loadList() {
 
   const container = document.querySelector('.container-products-models');
