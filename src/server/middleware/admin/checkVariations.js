@@ -17,8 +17,6 @@ const checkDuplicates = async (req, res, next)=>{
         if (checkingTable.length !== 0) {
 
         }
-
-        errors.push('asd')
         
         console.log(errors);
     }); 

@@ -23,16 +23,16 @@ function logOut( ){
     const btnLogOut = selectHtml('.icon_log-out')
     console.log(btnLogOut)
 
-    btnLogOut.onclick = () => {
-        console.log('asd')
-        localStorage.removeItem('token.ow')
+    btnLogOut.onclick = ()=>{
 
+        localStorage.removeItem('token.ow')
         location.reload()
 
     }
-    
-    
+
+
 }
+    
 
 
 setUserData()

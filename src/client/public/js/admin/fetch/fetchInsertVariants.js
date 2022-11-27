@@ -105,7 +105,6 @@ function insertVariations() {
       updatePriceVariant()
     }, 1000);
 
-    console.log('asd');
 
   }
 }
