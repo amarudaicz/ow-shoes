@@ -1,4 +1,3 @@
-const publicUrl = 'https://ow-shoes.vercel.app/'
 
 
 async function fetchLoginGo(user) {
