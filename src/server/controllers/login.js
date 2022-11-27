@@ -59,16 +59,16 @@ const registerControl = async (req, res) => {
       passwordHash,
     ]);
 
+
+    const payload = {
+      id:newUser.insertId,
+      name
+    }
     
-    // const payload = {
-    //   id:newUser.insertId,
-    //   name
-    // }
+    const token = tokenSign(payload);
+    const succes = 'Usuario registrado correctamente '
     
-    // const token = tokenSign(payload);
-    // const succes = 'Usuario registrado correctamente '
-    
-    res.json({ newUser });
+    res.json({ token, succes });
 
   } catch (err) {
     console.log(err);
