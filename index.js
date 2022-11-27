@@ -33,7 +33,9 @@ app.set('port', process.env.PORT );
 
 // WXw*CUULd]6eWVH=
 
-
+app.get('/', (req, res)=>{
+  res.redirect('/home')
+})
 
 
 app.listen(app.get('port'), ( ) => {
