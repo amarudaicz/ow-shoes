@@ -51,7 +51,6 @@ const registerControl = async (req, res) => {
 
     const passwordHash = await encrypt(password);
 
-
     const insertQuery = `INSERT INTO users (name, email, age, role, password) VALUES (?, ?, ?, ?, ?);`;
     const newUser = await doQuery(insertQuery, [
       name,
@@ -74,7 +73,7 @@ const registerControl = async (req, res) => {
 
   } catch (err) {
     console.log(err);
-    handleHttpError(res, 'ERROR_EN_REGISTER_CONTROL');
+    handleHttpError(res, err);
   }
 };
 
