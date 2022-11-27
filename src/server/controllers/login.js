@@ -37,7 +37,6 @@ const isAuth = (req, res)=>{
 
 
 
-
 const registerControl = async (req, res) => {
   try {
 
@@ -60,16 +59,16 @@ const registerControl = async (req, res) => {
       passwordHash,
     ]);
 
-    const succes = 'Usuario registrado correctamente '
-
-    const payload = {
-      id:newUser.insertId,
-      name
-    }
-
-    const token = tokenSign(payload);
     
-    res.json({ token, succes});
+    // const payload = {
+    //   id:newUser.insertId,
+    //   name
+    // }
+    
+    // const token = tokenSign(payload);
+    // const succes = 'Usuario registrado correctamente '
+    
+    res.json({ newUser });
 
   } catch (err) {
     console.log(err);
@@ -104,7 +103,7 @@ const loginControl = async (req, res) => {
 
     res.cookie('token.ow', token, {})
 
-    res.json({token, log:true});
+    res.send({token, log:true});
 
   } catch (err) {
 
