@@ -1,7 +1,9 @@
+const publicUrl = 'https://ow-shoes.vercel.app/'
+
 
 const fetchGetVariantsByColor = async (idvariant, idColor) => {
 
-    const urlFetch = `http://localhost:3000/products/get-variants-bycolor?id=${idvariant}&color_id=${idColor}` ;
+    const urlFetch = publicUrl +  `products/get-variants-bycolor?id=${idvariant}&color_id=${idColor}` ;
   
     const resServer = await fetch(urlFetch, {
   

@@ -1,8 +1,9 @@
+const publicUrl = 'https://ow-shoes.vercel.app/'
 
 
 async function fetchLoginGo(user) {
 
-  return await fetch('http://localhost:3000/login/go', {
+  return await fetch(publicUrl + 'login/go', {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -16,7 +17,7 @@ async function fetchLoginGo(user) {
 
 async function fetchLoginRegister(newUser) {
 
-  return await fetch('http://localhost:3000/login/register', {
+  return await fetch(publicUrl + 'login/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -30,7 +31,7 @@ async function fetchLoginRegister(newUser) {
 
 async function isLogged() {
 
-  return await fetch('http://localhost:3000/login/isAuth', {
+  return await fetch(publicUrl + 'login/isAuth', {
     headers: {
       token: localStorage.getItem('token.ow'),
     },
@@ -42,7 +43,7 @@ async function isLogged() {
 
 async function getUser() {
 
-  return await fetch('http://localhost:3000/login/getUser', {
+  return await fetch(publicUrl + 'login/getUser', {
     headers: {
       token: localStorage.getItem('token.ow'),
     },

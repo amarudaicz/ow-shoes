@@ -1,5 +1,7 @@
+const publicUrl = 'https://ow-shoes.vercel.app/'
+
 const fetchGetProductsModels = async () => {
-  const urlFetch = `http://localhost:3000/admin/list-products `;
+  const urlFetch = publicUrl + `admin/list-products `;
 
   const resServer = await fetch(urlFetch, {
     method: 'GET',
@@ -9,7 +11,7 @@ const fetchGetProductsModels = async () => {
 };
 
 const fetchGetAtributesValues = async (table) => {
-  const urlFetch = `http://localhost:3000/admin/get-guide-values/${table}`;
+  const urlFetch = publicUrl + `admin/get-guide-values/${table}`;
 
   const resServer = await fetch(urlFetch, {
 
@@ -18,9 +20,8 @@ const fetchGetAtributesValues = async (table) => {
   return resServer.json();
 };
 
-
 const fetchGetProductsVariations = async (id) => {
-  const urlFetch = `http://localhost:3000/admin/get-products-variations?id=${id}`;
+  const urlFetch = publicUrl + `admin/get-products-variations?id=${id}`;
 
   const resServer = await fetch(urlFetch, {
 
@@ -31,7 +32,7 @@ const fetchGetProductsVariations = async (id) => {
 
 
 const fetchGetSizesProductModel = async (idProductModel) => {
-  const urlFetch = `http://localhost:3000/admin/get-sizes-product-model?id=${idProductModel} `;
+  const urlFetch = publicUrl + `admin/get-sizes-product-model?id=${idProductModel} `;
 
   const resServer = await fetch(urlFetch, {
     method: 'GET',
@@ -42,7 +43,7 @@ const fetchGetSizesProductModel = async (idProductModel) => {
 
 
 const fetchGetColorsProductModel = async (idProductModel) => {
-  const urlFetch = `http://localhost:3000/admin/get-colors-product-model?id=${idProductModel} `;
+  const urlFetch = publicUrl + `admin/get-colors-product-model?id=${idProductModel} `;
 
   const resServer = await fetch(urlFetch, {
     method: 'GET',
@@ -53,7 +54,7 @@ const fetchGetColorsProductModel = async (idProductModel) => {
 
 
 const fetchInsertProduct = async (dataForm) => {
-  const urlFetch = ` http://localhost:3000/admin/insert-product`;
+  const urlFetch = `publicUrl +  admin/insert-product`;
 
   const resServer = await fetch(urlFetch, {
     method: 'POST',
@@ -70,7 +71,7 @@ const fetchInsertProduct = async (dataForm) => {
 
 
 const fetchDeleteProduct = async (idProduct) => {
-  const urlFetch = ` http://localhost:3000/admin/delete-product/${idProduct}`;
+  const urlFetch = `publicUrl +  admin/delete-product/${idProduct}`;
 
   const resServer = await fetch(urlFetch, {
     method: 'DELETE',
@@ -81,7 +82,7 @@ const fetchDeleteProduct = async (idProduct) => {
 
 
 const fetchUpdateProductModel = async (data) => {
-  const urlFetch = `http://localhost:3000/admin/update-product-model`;
+  const urlFetch = publicUrl + `admin/update-product-model`;
 
   const resServer = await fetch(urlFetch, {
     headers:{
@@ -98,7 +99,7 @@ const fetchUpdateProductModel = async (data) => {
 
 
 const fetchInsertVariants = async (data) => {
-  const urlFetch = 'http://localhost:3000/admin/insert-variations';
+  const urlFetch = publicUrl + 'admin/insert-variations';
 
   const resServer = await fetch(urlFetch, {
     headers:{
@@ -114,7 +115,7 @@ const fetchInsertVariants = async (data) => {
 
 const fetchGetFilterVariants = async (productId, attribute, value ) => {
 
-  const urlFetch = `http://localhost:3000/admin/get-filter-variants?product_id=${productId}&attribute=${attribute}&value=${value}` ;
+  const urlFetch = publicUrl + `admin/get-filter-variants?product_id=${productId}&attribute=${attribute}&value=${value}` ;
 
   const resServer = await fetch(urlFetch, {
 
@@ -128,7 +129,7 @@ const fetchGetFilterVariants = async (productId, attribute, value ) => {
 
 const fetchDeleteProductVariant = async (idvariant) => {
 
-  const urlFetch = `http://localhost:3000/admin/delete-product-variant/${idvariant}` ;
+  const urlFetch = publicUrl + `admin/delete-product-variant/${idvariant}` ;
 
   const resServer = await fetch(urlFetch, {
     method:'DELETE'
@@ -141,7 +142,7 @@ const fetchDeleteProductVariant = async (idvariant) => {
 
 const fetchEditProductVariant = async (idvariant, newPrice, newStock) => {
 
-  const urlFetch = `http://localhost:3000/admin/edit-product-variant?idVariant=${idvariant}&price=${newPrice}&stock=${newStock}` ;
+  const urlFetch = publicUrl + `admin/edit-product-variant?idVariant=${idvariant}&price=${newPrice}&stock=${newStock}` ;
 
   const resServer = await fetch(urlFetch, {
     method:'put'
