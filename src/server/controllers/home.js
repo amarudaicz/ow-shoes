@@ -2,7 +2,7 @@ const { doQuery } = require('../services/mysqlS/operationsMysql');
 const handleHttpError = require('../utils/handleHttpError');
 const { verifyToken } = require('../utils/handleJwt');
 
-
+ 
 
 const getHome = async (req, res) => {
 
@@ -10,8 +10,7 @@ const getHome = async (req, res) => {
 
     const products = await doQuery('SELECT products.id, title, subtitle, price, price_offer, thumbnail_image FROM products INNER JOIN products_images ON products_images.product_model_id = products.id')
     console.log(products);
-    res.send(process.env.DB_HOST) 
-    // res.render('home', {products})
+    res.render('home', {products})
 
   } catch (err) {
     console.log(err);

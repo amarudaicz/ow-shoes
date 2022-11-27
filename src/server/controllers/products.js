@@ -4,8 +4,7 @@ const handleHttpError = require('../utils/handleHttpError');
 const getItem = async (req, res) => {
   try {
     const { id } = req.query;
-    console.log(id);
-
+    
     let product = await doQuery('SELECT products.id, title, subtitle, price, price_offer, descripcion_1, descripcion_2, detail_images, thumbnail_image FROM products INNER JOIN products_images ON products_images.product_model_id = products.id WHERE products.id = ?', [id]);
     product = product[0]
     product.detail_images = JSON.parse(product.detail_images) 
