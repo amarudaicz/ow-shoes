@@ -1,15 +1,4 @@
-const publicUrl = 'https://ow-shoes.vercel.app/'
 
-
-const fetchGetProductsModels = async () => {
-  const urlFetch = publicUrl + `admin/list-products `;
-
-  const resServer = await fetch(urlFetch, {
-    method: 'GET',
-  });
-
-  return resServer.json();
-};
 
 (async function loadList() {
 
