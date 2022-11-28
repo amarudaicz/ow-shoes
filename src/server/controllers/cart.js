@@ -2,6 +2,7 @@ const handleHttpError = require('../utils/handleHttpError');
 
 const { doQuery } = require('../services/mysqlS/operationsMysql');
 
+
 const getCartByUser = async (req, res) => {
   try {
 
@@ -24,9 +25,10 @@ const getCartByUser = async (req, res) => {
 
   } catch (err) {
     console.log(err);
-    handleHttpError(res, 'ERROR_EN_GET_CART');
+    handleHttpError(res, err);
   }
 };
+
 
 const insertItemCart = async (req, res) => {
   try {
