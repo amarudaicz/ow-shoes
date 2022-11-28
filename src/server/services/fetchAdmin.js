@@ -1,6 +1,6 @@
 
 const fetchGetProductsModels = async () => {
-  const urlFetch = publicUrl + `admin/list-products `;
+  const urlFetch = `https://ow-shoes.vercel.app/admin/list-products `;
 
   const resServer = await fetch(urlFetch, {
     method: 'GET',
@@ -10,7 +10,7 @@ const fetchGetProductsModels = async () => {
 };
 
 const fetchGetAtributesValues = async (table) => {
-  const urlFetch = publicUrl + `admin/get-guide-values/${table}`;
+  const urlFetch = `https://ow-shoes.vercel.app/admin/get-guide-values/${table}`;
 
   const resServer = await fetch(urlFetch, {
 
@@ -20,7 +20,7 @@ const fetchGetAtributesValues = async (table) => {
 };
 
 const fetchGetProductsVariations = async (id) => {
-  const urlFetch = publicUrl + `admin/get-products-variations?id=${id}`;
+  const urlFetch = `https://ow-shoes.vercel.app/admin/get-products-variations?id=${id}`;
 
   const resServer = await fetch(urlFetch, {
 
@@ -31,7 +31,7 @@ const fetchGetProductsVariations = async (id) => {
 
 
 const fetchGetSizesProductModel = async (idProductModel) => {
-  const urlFetch = publicUrl + `admin/get-sizes-product-model?id=${idProductModel} `;
+  const urlFetch = `https://ow-shoes.vercel.app/admin/get-sizes-product-model?id=${idProductModel} `;
 
   const resServer = await fetch(urlFetch, {
     method: 'GET',
@@ -42,7 +42,7 @@ const fetchGetSizesProductModel = async (idProductModel) => {
 
 
 const fetchGetColorsProductModel = async (idProductModel) => {
-  const urlFetch = publicUrl + `admin/get-colors-product-model?id=${idProductModel} `;
+  const urlFetch = `https://ow-shoes.vercel.app/admin/get-colors-product-model?id=${idProductModel} `;
 
   const resServer = await fetch(urlFetch, {
     method: 'GET',
@@ -53,7 +53,7 @@ const fetchGetColorsProductModel = async (idProductModel) => {
 
 
 const fetchInsertProduct = async (dataForm) => {
-  const urlFetch = `publicUrl +  admin/insert-product`;
+  const urlFetch = ` https://ow-shoes.vercel.app/admin/insert-product`;
 
   const resServer = await fetch(urlFetch, {
     method: 'POST',
@@ -70,7 +70,7 @@ const fetchInsertProduct = async (dataForm) => {
 
 
 const fetchDeleteProduct = async (idProduct) => {
-  const urlFetch = `publicUrl +  admin/delete-product/${idProduct}`;
+  const urlFetch = ` https://ow-shoes.vercel.app/admin/delete-product/${idProduct}`;
 
   const resServer = await fetch(urlFetch, {
     method: 'DELETE',
@@ -81,7 +81,7 @@ const fetchDeleteProduct = async (idProduct) => {
 
 
 const fetchUpdateProductModel = async (data) => {
-  const urlFetch = publicUrl + `admin/update-product-model`;
+  const urlFetch = `https://ow-shoes.vercel.app/admin/update-product-model`;
 
   const resServer = await fetch(urlFetch, {
     headers:{
@@ -98,7 +98,7 @@ const fetchUpdateProductModel = async (data) => {
 
 
 const fetchInsertVariants = async (data) => {
-  const urlFetch = publicUrl + 'admin/insert-variations';
+  const urlFetch = 'https://ow-shoes.vercel.app/admin/insert-variations';
 
   const resServer = await fetch(urlFetch, {
     headers:{
@@ -114,7 +114,7 @@ const fetchInsertVariants = async (data) => {
 
 const fetchGetFilterVariants = async (productId, attribute, value ) => {
 
-  const urlFetch = publicUrl + `admin/get-filter-variants?product_id=${productId}&attribute=${attribute}&value=${value}` ;
+  const urlFetch = `https://ow-shoes.vercel.app/admin/get-filter-variants?product_id=${productId}&attribute=${attribute}&value=${value}` ;
 
   const resServer = await fetch(urlFetch, {
 
@@ -128,7 +128,7 @@ const fetchGetFilterVariants = async (productId, attribute, value ) => {
 
 const fetchDeleteProductVariant = async (idvariant) => {
 
-  const urlFetch = publicUrl + `admin/delete-product-variant/${idvariant}` ;
+  const urlFetch = `https://ow-shoes.vercel.app/admin/delete-product-variant/${idvariant}` ;
 
   const resServer = await fetch(urlFetch, {
     method:'DELETE'
@@ -141,7 +141,7 @@ const fetchDeleteProductVariant = async (idvariant) => {
 
 const fetchEditProductVariant = async (idvariant, newPrice, newStock) => {
 
-  const urlFetch = publicUrl + `admin/edit-product-variant?idVariant=${idvariant}&price=${newPrice}&stock=${newStock}` ;
+  const urlFetch = `https://ow-shoes.vercel.app/admin/edit-product-variant?idVariant=${idvariant}&price=${newPrice}&stock=${newStock}` ;
 
   const resServer = await fetch(urlFetch, {
     method:'put'

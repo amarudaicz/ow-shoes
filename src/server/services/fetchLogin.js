@@ -2,7 +2,7 @@
 
 async function fetchLoginGo(user) {
 
-  return await fetch(publicUrl + 'login/go', {
+  return await fetch(  'https://ow-shoes.vercel.app/login/go', {
     headers: {
       'Content-Type': 'application/json',
     },
@@ -16,7 +16,7 @@ async function fetchLoginGo(user) {
 
 async function fetchLoginRegister(newUser) {
 
-  return await fetch(publicUrl + 'login/register', {
+  return await fetch(  'https://ow-shoes.vercel.app/login/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ async function fetchLoginRegister(newUser) {
 
 async function isLogged() {
 
-  return await fetch(publicUrl + 'login/isAuth', {
+  return await fetch(  'https://ow-shoes.vercel.app/login/isAuth', {
     headers: {
       token: localStorage.getItem('token.ow'),
     },
@@ -42,7 +42,7 @@ async function isLogged() {
 
 async function getUser() {
 
-  return await fetch(publicUrl + 'login/getUser', {
+  return await fetch(  'https://ow-shoes.vercel.app/login/getUser', {
     headers: {
       token: localStorage.getItem('token.ow'),
     },
