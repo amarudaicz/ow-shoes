@@ -16,7 +16,7 @@ const checkOrders = async (req, res, next) => {
   
     const newOrder = await doQuery(
       'INSERT INTO orders (user_id, status, date) VALUES (?, ?, ?)',
-      [user.id, 'current', '10-11-2000']
+      [user.id, 'current', new Date(1999,11,10)]
     );
     
     req.orderId = newOrder.insertId;
