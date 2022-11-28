@@ -20,9 +20,9 @@ const getCartByUser = async (req, res) => {
     
     if (orderDetails.length === 0)
     return res.json({ errors: 'Parece que no hay productos en tu carrito!' });
-    
-    res.json(orderDetails);
 
+    res.json(orderDetails);
+    
   } catch (err) {
     console.log(err);
     handleHttpError(res, err);
