@@ -16,7 +16,7 @@ async function fetchDeleteItemCart(id) {
 
 
 async function fetchAssignOrder() {
-  const res = await fetch(`https://ow-shoes.vercel.app/cart/assign-order`, {
+  return await fetch(`https://ow-shoes.vercel.app/cart/assign-order`, {
     headers: {
       token: localStorage.getItem('token.ow'),
       orderId: localStorage.getItem('orderId'),
