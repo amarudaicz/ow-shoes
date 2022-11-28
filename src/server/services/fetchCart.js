@@ -23,7 +23,7 @@ async function fetchAssignOrder() {
       orderId: localStorage.getItem('orderId'),
     },
   });
-
+  
   const data = await res.json();
   localStorage.setItem('orderId', data);
 }

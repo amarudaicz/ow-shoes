@@ -8,9 +8,9 @@ async function setUserData() {
         return templateBtnsLogin(selectHtml('.switch'), 'afterend')
     }
          
-    // await fetchAssignOrder()
-
     const user = await getUser()  
+    
+    await fetchAssignOrder()
       
     templateDataUser(selectHtml('.switch'), user, 'afterend')
     logOut()

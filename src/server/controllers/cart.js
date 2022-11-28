@@ -17,12 +17,9 @@ const getCartByUser = async (req, res) => {
       [orderId]
     );
     
-    console.log({estosss:orderDetails});
-
     if (orderDetails.length === 0)
     return res.json({ errors: 'Parece que no hay productos en tu carrito!' });
     
-    console.log(orderDetails);
     res.json(orderDetails);
 
   } catch (err) {
@@ -84,7 +81,9 @@ const deleteItemCart = async (req, res) => {
 
 const assignOrder = async (req, res) => {
   try {
+    
     res.json(req.orderId);
+
   } catch (err) {
     console.log(err);
     handleHttpError(res, 'ERROR_EN_ASSIGN_ORDER');
