@@ -82,7 +82,7 @@ const deleteItemCart = async (req, res) => {
 const assignOrder = async (req, res) => {
   try {
 
-    res.json('hola');
+    res.json(req.user);
 
   } catch (err) {
     console.log(err);

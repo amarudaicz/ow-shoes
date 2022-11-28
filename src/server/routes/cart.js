@@ -8,7 +8,7 @@ const { validatorBuyProduct } = require('../validators/buyProductValidator');
 
 router.get('/getCartUser' ,authToken, checkOrders ,getCartByUser)
 
-router.get('/assign-order' , assignOrder)
+router.get('/assign-order' ,authToken , assignOrder)
 
 router.post('/insert-product', authToken, checkOrders, validatorBuyProduct, insertItemCart)
 
