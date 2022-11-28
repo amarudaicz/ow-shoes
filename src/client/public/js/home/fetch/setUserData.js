@@ -9,10 +9,10 @@ async function setUserData() {
     }
          
     const user = await getUser()  
-    
-    await fetchAssignOrder()
-      
     templateDataUser(selectHtml('.switch'), user, 'afterend')
+    
+    
+    const order = await fetchAssignOrder()
     logOut()
     
 }

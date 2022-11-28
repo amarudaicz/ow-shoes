@@ -30,7 +30,7 @@ async function fetchLoginRegister(newUser) {
 
 async function isLogged() {
 
-  return await fetch(  'https://ow-shoes.vercel.app/login/isAuth', {
+  return await fetch('https://ow-shoes.vercel.app/login/isAuth', {
     headers: {
       token: localStorage.getItem('token.ow'),
     },
@@ -42,7 +42,7 @@ async function isLogged() {
 
 async function getUser() {
 
-  return await fetch(  'https://ow-shoes.vercel.app/login/getUser', {
+  return await fetch('https://ow-shoes.vercel.app/login/getUser', {
     headers: {
       token: localStorage.getItem('token.ow'),
     },

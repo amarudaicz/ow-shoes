@@ -1,4 +1,3 @@
-const publicUrl = 'https://ow-shoes.vercel.app/'
 
 async function fetchGetCart() {
   return await fetch('https://ow-shoes.vercel.app/cart/getCartUser', {
@@ -22,10 +21,12 @@ async function fetchAssignOrder() {
       token: localStorage.getItem('token.ow'),
       orderId: localStorage.getItem('orderId'),
     },
-  });
+  })
+  .then(res => res.json())
+  .then(data => {
+    localStorage.setItem('orderId', data);
+  })
   
-  const data = await res.json();
-  localStorage.setItem('orderId', data);
 }
 
 
