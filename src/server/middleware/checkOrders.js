@@ -5,13 +5,13 @@ const checkOrders = async (req, res, next) => {
   
   const user = req.user;
   
-  // const order = await doQuery('SELECT * FROM orders WHERE user_id = ? and status = "current" ', [user.id])
+  const order = await doQuery('SELECT * FROM orders WHERE user_id = ? and status = "current" ', [user.id])
   
-  // if (order[0]) {
-  //   req.orderId = order[0].id;
-  //   console.log('has order');
-  //   return next();
-  // }
+  if (order[0]) {
+    req.orderId = order[0].id;
+    console.log('has order');
+    return next();
+  }
 
 
   const newOrder = await doQuery(

@@ -86,7 +86,7 @@ const assignOrder = async (req, res) => {
 
   } catch (err) {
     console.log(err);
-    handleHttpError(res, 'ERROR_EN_ASSIGN_ORDER');
+    handleHttpError(res, err);
   }
 };
 
