@@ -11,7 +11,7 @@ const authToken = (req, res, next) => {
     if (token === 'null' || !token) return res.json({errors:'Not Token'})
 
     const payload = verifyToken(token);
-
+    
     //MANDAR A LOGIN
     if (!payload) return res.json({errors:'Token Invalid'})
 

@@ -81,8 +81,8 @@ const deleteItemCart = async (req, res) => {
 
 const assignOrder = async (req, res) => {
   try {
-    
-    res.json(req.orderId);
+
+    res.json(req);
 
   } catch (err) {
     console.log(err);
