@@ -5,17 +5,17 @@ setTimeout(() => {
 
 async function getCart() {
   
-  const cartLayout = selectHtml('.cart_sidebar')
   
+  const cartLayout = selectHtml('.cart_sidebar')
   if (cartLayout) cartLayout.remove()
   
   const orderDetails = await fetchGetCart();
   console.log(orderDetails);
   templateCartLayout(orderDetails);
   animationOpenCart(selectHtml('.cart_sidebar'))
+  
 
   setTimeout(() => {
-
 
     deleteItemCart()
     

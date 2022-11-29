@@ -33,19 +33,17 @@ const getCartByUser = async (req, res) => {
 const insertItemCart = async (req, res) => {
   try {
     console.log({esto:req.body});
+
     const { color_id, size_id, productModelId, quantity } = req.body;
     const { orderId } = req;
-
 
     const productVariant = await doQuery('SELECT * FROM products_variants WHERE size_id = ? AND color_id = ? ;', [
       size_id, color_id
     ]);
 
-
     const order = await doQuery('SELECT total FROM orders WHERE id = ?;', [
       orderId,
     ]);
-
 
     const updateTotal = doQuery(`UPDATE orders SET total = ? WHERE id = ? ;`, [
       order[0].total + productVariant[0].price * quantity,
@@ -61,7 +59,7 @@ const insertItemCart = async (req, res) => {
 
   } catch (err) {
     console.log(err);
-    handleHttpError(res, 'ERROR_EN_BUY_PRODUCT');
+    handleHttpError(res, err);
   }
 };
 
