@@ -66,17 +66,15 @@ const InsertProduct = async (req, res) => {
     );
 
   
-
     await doQuery(
       'INSERT INTO products_images (product_model_id) VALUES (?)',
       [newProduct.insertId]
-      
     )
 
     res.redirect('back');
   } catch (err) {
 
-    handleHttpError(res, 'ERROR_EN_INSERT_PRODUCT')
+    handleHttpError(res, err)
 
   }
 };
@@ -90,7 +88,6 @@ const uploadThumbanail = async (req,res)=>{
     const {id} = req.body
     console.log(file);
 
-    
     await doQuery(
       'UPDATE products_images SET thumbnail_image = ?  WHERE product_model_id = ?',
       [file.filename, id]

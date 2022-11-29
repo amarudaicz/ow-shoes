@@ -29,7 +29,7 @@ function templateListProductsModels(data, container) {
             <td class="row-data">${unidades_vendidas = 1} </td>
             <td>
             <div class="container-btn-list">
-              <a href="http://localhost:3000/admin/edit-product?id=${id}">
+              <a href="https://ow-shoes.vercel.app/admin/edit-product?id=${id}">
                 <input type="button" class="btn-edit-product btn-list" value="Editar">
               </a>
 
