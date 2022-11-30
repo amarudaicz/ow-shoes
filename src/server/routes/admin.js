@@ -65,7 +65,7 @@ router.get('/get-colors-product-model', getColorsProductModel)
 
 //CRUD PRODUCTS
 router.post('/insert-product', InsertProduct);
-router.post('/insert-image-thumbnail', upload.single('img-thumbnail-product') ,uploadThumbanail);
+router.post('/insert-image-thumbnail' ,uploadThumbanail);
 router.post('/insert-image-detail', multerOp.uploadArray ,uploadDetailImages);
 router.delete('/delete-product/:id', deleteProduct);
 router.delete('/delete-product-variant/:id', deleteProductVariant);
