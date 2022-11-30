@@ -1,4 +1,3 @@
-const urlHost = 'https://ow-shoes.vercel.app/'
 
 async function fetchGetCart() {
   return await fetch( urlHost + 'cart/getCartUser', {
