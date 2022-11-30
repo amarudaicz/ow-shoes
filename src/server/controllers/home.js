@@ -10,6 +10,7 @@ const getHome = async (req, res) => {
 
     const products = await doQuery('SELECT products.id, title, subtitle, price, price_offer, thumbnail_image FROM products INNER JOIN products_images ON products_images.product_model_id = products.id')
     console.log(products);
+    
     res.render('home', {products})
 
   } catch (err) {

@@ -65,7 +65,7 @@ const InsertProduct = async (req, res) => {
       [title, subtitle, price, priceOffer, desc1, desc2]
     );
 
-  
+   
     await doQuery(
       'INSERT INTO products_images (product_model_id) VALUES (?)',
       [newProduct.insertId]

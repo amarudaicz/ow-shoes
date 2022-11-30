@@ -1,6 +1,6 @@
 
 async function fetchGetCart() {
-  return await fetch('https://ow-shoes.vercel.app/cart/getCartUser', {
+  return await fetch( urlHost + 'cart/getCartUser', {
     headers: {
       token: localStorage.getItem('token.ow'),
     },
@@ -9,14 +9,14 @@ async function fetchGetCart() {
 
 
 async function fetchDeleteItemCart(id) {
-  return await fetch(`https://ow-shoes.vercel.app/cart/delete-product/${id}`, {
+  return await fetch(urlHost + `cart/delete-product/${id}`, {
     method: 'DELETE',
   }).then((res) => res.json());
 }
 
 
 async function fetchAssignOrder() {
-  return await fetch(`https://ow-shoes.vercel.app/cart/assign-order`, {
+  return await fetch(urlHost + `cart/assign-order`, {
     headers: {
       token: localStorage.getItem('token.ow'),
       orderId: localStorage.getItem('orderId'),
@@ -31,7 +31,7 @@ async function fetchAssignOrder() {
 
 
 async function fetchInsertProductCart(body) {
-  return await fetch(`https://ow-shoes.vercel.app/cart/insert-product`, {
+  return await fetch(urlHost + `cart/insert-product`, {
     method:'POST',
     headers: {
       'Content-Type': 'application/json',
