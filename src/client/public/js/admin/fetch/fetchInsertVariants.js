@@ -93,17 +93,17 @@ function insertVariations() {
     const id = document.querySelector('#idProduct').value;
 
     setTimeout(async() => {
-      
       const productsVariants = await fetchGetProductsVariations(id);
       console.log(productsVariants);
 
       const container = document.querySelector('.list-variants');
       const rowTables = selectHtml('.row-table', 'all');
+      console.log(rowTables);
       rowTables.forEach(e => e.remove())
       templateListVariations(productsVariants, container)
       deleteProductVariant()
       updatePriceVariant()
-    }, 1000);
+    }, 2000);
 
 
   }
