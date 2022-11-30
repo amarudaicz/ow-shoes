@@ -103,7 +103,7 @@ function insertVariations() {
       templateListVariations(productsVariants, container)
       deleteProductVariant()
       updatePriceVariant()
-    }, 2000);
+    }, 5000);
 
 
   }
