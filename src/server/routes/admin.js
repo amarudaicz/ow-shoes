@@ -25,25 +25,6 @@ const {validatorInsertProduct, validatorInsertVariants} = require('../validators
 
 const multerOp = require('../middleware/admin/uploadImages');
 
-const multer = require('multer');
-
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads');
-  },
-  
-  filename: function (req, file, cb) {
-    const date = new Date();
-    const [month, day, year] = [date.getMonth(), date.getDate(), date.getFullYear()];
-    
-    cb(null, `${month}-${day}-${year}-${file.originalname.replace(' ', '-')}` );
-  },
-});
-
-
-const upload = multer({ storage: storage });
-
-
 router.get('/home', getAdminPanel);
 
 router.get('/products-panel', getProductsPanel);
@@ -65,8 +46,8 @@ router.get('/get-colors-product-model', getColorsProductModel)
 
 //CRUD PRODUCTS
 router.post('/insert-product', InsertProduct);
-router.post('/insert-image-thumbnail' ,uploadThumbanail);
-router.post('/insert-image-detail', multerOp.uploadArray ,uploadDetailImages);
+router.post('/insert-image-thumbnail', uploadThumbanail);
+router.post('/insert-image-detail', uploadDetailImages);
 router.delete('/delete-product/:id', deleteProduct);
 router.delete('/delete-product-variant/:id', deleteProductVariant);
 
