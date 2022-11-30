@@ -1,3 +1,4 @@
+const urlHost = urlHost + 'https://ow-shoes.vercel.app/'
 
 
 const fetchGetVariantsByColor = async (idvariant, idColor) => {
