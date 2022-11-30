@@ -1,4 +1,5 @@
-var urlHost ='https://ow-shoes.vercel.app/'
+
+const urlHost ='https://ow-shoes.vercel.app/'
 
 const fetchGetProductsModels = async () => {
   const urlFetch = urlHost + `admin/list-products `;
