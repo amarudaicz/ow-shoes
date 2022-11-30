@@ -84,14 +84,15 @@ const uploadThumbanail = async (req,res)=>{
 
   try {
 
-    const {file} = req
-    const {id} = req.body
-    console.log(file);
+    // const {file} = req
+    // const {id} = req.body
 
-    await doQuery(
-      'UPDATE products_images SET thumbnail_image = ?  WHERE product_model_id = ?',
-      [file.filename, id]
-    )
+    // console.log(file);
+
+    // await doQuery(
+    //   'UPDATE products_images SET thumbnail_image = ?  WHERE product_model_id = ?',
+    //   [file.filename, id]
+    // )
 
     res.redirect('back')
 
@@ -110,8 +111,6 @@ const uploadDetailImages = async (req,res)=>{
     const {files} = req
     const {id} = req.body
     const images = files.map(f => f.filename)
-    console.log(images);
-    console.log(id);
 
     await doQuery(
       'UPDATE products_images SET detail_images = ?  WHERE product_model_id = ?',
