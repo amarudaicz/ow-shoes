@@ -133,16 +133,21 @@ function buyProduct() {
     cartArray.push(dataFormJSON)
 
     if (localStorage.getItem('cart-user')) {
-      let cart = JSON.parse(localStorage.getItem('cart-user'))  
-      cart.push(dataFormJSON)
-      localStorage.setItem('cart-user', JSON.stringify(cart))
+      let cart = JSON.parse(localStorage.getItem('cart-user'))
+      cart.forEach(e =>{
+        if (e.color_id === dataFormJSON.color_id && e.size_id === dataFormJSON.size_id && e.productModelId === dataFormJSON.productModelId){
+          e.quantity + 1
+          localStorage.setItem('cart-user', JSON.stringify(cart))
+        }else{
+          cart.push(dataFormJSON)
+          localStorage.setItem('cart-user', JSON.stringify(cart))
+        }
+      })
+
       return
     }
 
-    console.log(cartArray);
     localStorage.setItem('cart-user', JSON.stringify(cartArray))
-    console.log(localStorage.getItem('cart-user'));
-
     // const res = await fetchInsertProductCart(dataFormJSON);
 
     if (res.errors) {
