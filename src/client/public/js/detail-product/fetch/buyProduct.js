@@ -135,7 +135,8 @@ function buyProduct() {
     if (localStorage.getItem('cart-user')) {
       let cart = JSON.parse(localStorage.getItem('cart-user'))  
       cart.push(dataFormJSON)
-      localStorage.setItem('cart-user', cart)
+      localStorage.setItem('cart-user', JSON.stringify(cart))
+      return
     }
 
     console.log(cartArray);
