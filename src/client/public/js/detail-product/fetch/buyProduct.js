@@ -128,7 +128,7 @@ function buyProduct() {
 
     const form = selectHtml('.form_comprar');
     const dataForm = new FormData(form);
-
+  
 
     const dataFormJSON = handleFormData(dataForm);
     console.log(dataFormJSON);
