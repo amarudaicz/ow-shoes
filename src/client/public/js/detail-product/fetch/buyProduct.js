@@ -131,7 +131,7 @@ function buyProduct() {
     const dataFormJSON = handleFormData(dataForm);
     
     if (localStorage.getItem('cart-user')) {
-      let cart = localStorage.getItem('cart-user') 
+      let cart = JSON.parse(localStorage.getItem('cart-user'))  
       cart.push(dataFormJSON)
     }
 
@@ -172,5 +172,5 @@ function handleFormData(formData) {
     data[key] = formData.get(key);
   }
 
-  return data;
+  return JSON.stringify(data);
 }
