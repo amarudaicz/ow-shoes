@@ -2,15 +2,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 async function selectSwatches() {
  
   function swatchSelected(event, groupLabel, selectSpan, selectedStock, btnColor){
@@ -32,7 +23,6 @@ async function selectSwatches() {
         const dataStock = event.target.dataset.stock
 
         if (dataStock) {
-            console.log(dataStock);
             stock.innerHTML = dataStock + '<i class="fa-solid fa-circle check-stock"></i>'
             stock.classList.remove(stock.classList[1])
             stock.classList.add(dataClass)
@@ -55,6 +45,7 @@ async function selectSwatches() {
     }
 
     setData(event, selectSpan, selectedStock )
+
     }
 
 
@@ -131,21 +122,30 @@ selectSwatches();
 
 
 
-
-
-
 function buyProduct() {
+
   async function sendData(event) {
+
     const form = selectHtml('.form_comprar');
     const dataForm = new FormData(form);
+    
+    for (let data of dataForm){
+      console.log(data)
+    }
+
+
     const dataFormJSON = handleFormData(dataForm);
     const res = await fetchInsertProductCart(dataFormJSON);
 
     if (res.errors) {
       try {
+
         return res.errors.forEach((e) => toastr.error(e.msg));
+
       } catch (err) {
+
         return toastr.error(res.errors);
+
       }
     }
 
