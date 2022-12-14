@@ -130,9 +130,14 @@ function buyProduct() {
     const dataForm = new FormData(form);
     const dataFormJSON = handleFormData(dataForm);
     
+    if (localStorage.getItem('cart-user')) {
+      let cart = localStorage.getItem('cart-user') 
+      cart.push(dataFormJSON)
+    }
+
     localStorage.setItem('cart-user', [dataFormJSON])
 
-    console.log(dataFormJSON);
+    console.log(localStorage.getItem('cart-user'));
 
     // const res = await fetchInsertProductCart(dataFormJSON);
 
