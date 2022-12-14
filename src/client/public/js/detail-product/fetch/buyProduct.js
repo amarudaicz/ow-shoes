@@ -129,13 +129,16 @@ function buyProduct() {
     const form = selectHtml('.form_comprar');
     const dataForm = new FormData(form);
     const dataFormJSON = handleFormData(dataForm);
-    
+    const cartArray = [].push(dataFormJSON)
+
     if (localStorage.getItem('cart-user')) {
       let cart = JSON.parse(localStorage.getItem('cart-user'))  
       cart.push(dataFormJSON)
+      localStorage.setItem('cart-user', cart)
+
     }
 
-    localStorage.setItem('cart-user', [dataFormJSON])
+    localStorage.setItem('cart-user', JSON.stringify(cartArray))
 
     console.log(localStorage.getItem('cart-user'));
 
@@ -172,5 +175,5 @@ function handleFormData(formData) {
     data[key] = formData.get(key);
   }
 
-  return JSON.stringify(data);
+  return data;
 }
