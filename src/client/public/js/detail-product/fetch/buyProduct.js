@@ -128,14 +128,12 @@ function buyProduct() {
 
     const form = selectHtml('.form_comprar');
     const dataForm = new FormData(form);
-    
-    for (let data of dataForm){
-      console.log(data)
-    }
 
 
     const dataFormJSON = handleFormData(dataForm);
-    const res = await fetchInsertProductCart(dataFormJSON);
+    console.log(dataFormJSON);
+
+    // const res = await fetchInsertProductCart(dataFormJSON);
 
     if (res.errors) {
       try {
@@ -168,5 +166,5 @@ function handleFormData(formData) {
     data[key] = formData.get(key);
   }
 
-  return JSON.stringify(data);
+  return data;
 }
