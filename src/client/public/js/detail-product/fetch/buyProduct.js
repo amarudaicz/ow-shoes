@@ -130,26 +130,27 @@ function buyProduct() {
     const form = selectHtml('.form_comprar');
     const dataForm = new FormData(form);
     const dataFormJSON = handleFormData(dataForm);
-    let cartArray = []
-    cartArray.push(dataFormJSON)
 
-    if (localStorage.getItem('cart-user')) {
-      let cart = JSON.parse(localStorage.getItem('cart-user'))
-      cart.forEach(e =>{
-        if (e.color_id === dataFormJSON.color_id && e.size_id === dataFormJSON.size_id && e.productModelId === dataFormJSON.productModelId){
-          e.quantity + 1
-          localStorage.setItem('cart-user', JSON.stringify(cart))
+    // let cartArray = []
+    // cartArray.push(dataFormJSON)
+
+    // if (localStorage.getItem('cart-user')) {
+    //   let cart = JSON.parse(localStorage.getItem('cart-user'))
+    //   cart.forEach(e =>{
+    //     if (e.color_id === dataFormJSON.color_id && e.size_id === dataFormJSON.size_id && e.productModelId === dataFormJSON.productModelId){
+    //       e.quantity + 1
+    //       localStorage.setItem('cart-user', JSON.stringify(cart))
           
-        }else{
-          cart.push(dataFormJSON)
-          localStorage.setItem('cart-user', JSON.stringify(cart))
-        }
-      })
+    //     }else{
+    //       cart.push(dataFormJSON)
+    //       localStorage.setItem('cart-user', JSON.stringify(cart))
+    //     }
+    //   })
 
-      return
-    }
+    //   return
+    // }
 
-    localStorage.setItem('cart-user', JSON.stringify(cartArray))
+    // localStorage.setItem('cart-user', JSON.stringify(cartArray))
 
     const res = await fetchInsertProductCart(dataFormJSON);
 
@@ -166,7 +167,7 @@ function buyProduct() {
     }
 
     toastr.success('Producto agregado correctamente!');
-
+    console.log('asd')
     getCart();
   }
 
@@ -184,5 +185,5 @@ function handleFormData(formData) {
     data[key] = formData.get(key);
   }
 
-  return data;
+  return JSON.stringify(data);
 }
