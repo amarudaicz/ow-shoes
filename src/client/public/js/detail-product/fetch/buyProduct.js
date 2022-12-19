@@ -114,6 +114,7 @@ async function selectSwatches() {
   changeStateActive(btnSwatchesColor, grouplabelsColor,  selectedColor, selectedStockSpan, true );
   changeStateActive(inputSizeGroup, labelSizeGroup, selectedSize, selectedStockSpan );
 
+
 }
 
 selectSwatches();
@@ -138,6 +139,7 @@ function buyProduct() {
         if (e.color_id === dataFormJSON.color_id && e.size_id === dataFormJSON.size_id && e.productModelId === dataFormJSON.productModelId){
           e.quantity + 1
           localStorage.setItem('cart-user', JSON.stringify(cart))
+          
         }else{
           cart.push(dataFormJSON)
           localStorage.setItem('cart-user', JSON.stringify(cart))
@@ -148,7 +150,8 @@ function buyProduct() {
     }
 
     localStorage.setItem('cart-user', JSON.stringify(cartArray))
-    // const res = await fetchInsertProductCart(dataFormJSON);
+
+    const res = await fetchInsertProductCart(dataFormJSON);
 
     if (res.errors) {
       try {
