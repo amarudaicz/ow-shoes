@@ -22,7 +22,7 @@ router.get('/getUser', authToken , getUser);
 
 router.get('/isAuth', authToken, isAuth);
    
-router.post('/register', validatorRegisterUser, registerControl);
+router.post('/register', registerControl);
 
 router.post('/go', loginControl);
 

@@ -2,15 +2,16 @@ const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const cors = require('cors')
 require('dotenv').config()
  
 
-        
  
 //INSTANCIA DE EXPRESS
 const app = express();
-
-//MIDDLEWARES
+app.use(cors()) 
+ 
+//MIDDLEWARES 
 app.use(express.static(__dirname + '/src/server/services'));
 app.use(express.static(__dirname + '/src/client/public'));
 app.use(express.static(__dirname + '/src/server/uploads'));
@@ -26,7 +27,8 @@ app.use(cookieParser());
 app.use('/', require('./src/server/routes'));
 
 
-//app.set?
+
+//app.set
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/src/client/public/views/vistas');
 app.set('port', process.env.PORT );

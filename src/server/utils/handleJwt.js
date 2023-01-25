@@ -37,7 +37,6 @@ const verifyToken = (tokenJwt) => {
     
   } catch (err) {
     return false;
-
   }
 
 };

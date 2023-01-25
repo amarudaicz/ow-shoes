@@ -50,7 +50,7 @@ router.post('/insert-image-thumbnail', uploadThumbanail);
 router.post('/insert-image-detail', uploadDetailImages);
 router.delete('/delete-product/:id', deleteProduct);
 router.delete('/delete-product-variant/:id', deleteProductVariant);
-
+ 
 
 
 //EDIT PRODUCT
@@ -60,7 +60,7 @@ router.put('/update-product-model', updateProductCtrl);
 
 
 //ADD VARIATIONS
-router.post('/insert-variations', validatorInsertVariants, insertVariations);
+router.post('/insert-variations', insertVariations);
 router.get('/get-guide-values/:table', getGuideValues);
 router.get('/get-products-variations', getProductsVariations);
 
@@ -69,7 +69,6 @@ router.put('/edit-product-variant', editProductVariant);
 
 //FILTER LIST VARIANTS
 router.get('/get-filter-variants', filterVariants)
-
 
 
 

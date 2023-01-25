@@ -46,7 +46,7 @@ const registerControl = async (req, res) => {
     const user = await doQuery(query, email);
 
     if (user.length !== 0) 
-    return handleHttpError(res, 'User already exists', 401);
+    return handleHttpError(res, 'User already exists', 200);
 
     const passwordHash = await encrypt(password);
 
@@ -59,6 +59,7 @@ const registerControl = async (req, res) => {
       passwordHash,
     ]);
 
+    console.log(calculateAge(age))
 
     const payload = {
       id:newUser.insertId,
@@ -86,13 +87,13 @@ const loginControl = async (req, res) => {
     const user = await doQuery(`SELECT * FROM users WHERE email = ? OR name = ? ; `, [email, email]);
 
     if (user.length === 0) 
-    return handleHttpError(res, 'Email or user invalid')
+    return handleHttpError(res, 'Email o User incorrecto', 200)
   
     const hashPassword = user[0].password;
     const checkPassword = compareSync(password, hashPassword); //DEVUELVE TRUE SI LA COMPARACION ES EXITOSA
 
     if (!checkPassword)
-    return handleHttpError(res, 'Contraseña Incorrecta', 401);
+    return handleHttpError(res, 'Contraseña Incorrecta', 200);
       
     const payload = {
       id:user[0].id,
@@ -103,8 +104,8 @@ const loginControl = async (req, res) => {
 
     res.cookie('token.ow', token, {})
 
-    res.send({token, log:true});
-
+    res.json({token, name:user[0].name, role:user[0].role})
+      
   } catch (err) {
 
     console.log(err);

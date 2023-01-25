@@ -7,7 +7,7 @@ const getCartByUser = async (req, res) => {
   try {
 
     const orderId = req.orderId;
-
+    
     const orderDetails = await doQuery(
       `SELECT title, subtitle, order_details.price, order_details.id, size_us, size_arg, quantity, thumbnail_image FROM products
       INNER JOIN order_details ON order_details.product_model_id = products.id 

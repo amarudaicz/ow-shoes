@@ -46,35 +46,34 @@ const InsertProduct = async (req, res) => {
 
   try {
 
-    const {files} = req
-
+    const {form, imagesGalery, imageThumbnail} = req.body
     const {
       title,
       subtitle,
       price,
       priceOffer,
-      description1: desc1,
-      description2: desc2,
+      description,
 
-    } = req.body;
+    } = form;
 
     console.log(req.body);
 
     const newProduct = await doQuery(
-      'INSERT INTO products (title, subtitle, price, price_offer, descripcion_1, descripcion_2) VALUES (?,?,?,?,?,?)',
-      [title, subtitle, price, priceOffer, desc1, desc2]
+      'INSERT INTO products (title, subtitle, price, price_offer, descripcion_1) VALUES (?,?,?,?,?)',
+      [title, subtitle, price, priceOffer, description]
     );
-
+ 
    
     await doQuery(
-      'INSERT INTO products_images (product_model_id) VALUES (?)',
-      [newProduct.insertId]
+      'INSERT INTO products_images (product_model_id, detail_images, thumbnail_image ) VALUES (?, ?, ?)', //VER TABLA PHPMYADMIN
+      [newProduct.insertId, imagesGalery, imageThumbnail]
     )
 
-    res.redirect('back');
+    res.status(202).json({message:'Producto creado correctamente'})
+  
   } catch (err) {
-
-    handleHttpError(res, err)
+    console.log(err);
+    handleHttpError(res, 'A ocurrido un error', 403)
 
   }
 };
@@ -147,24 +146,38 @@ const deleteProduct = async ({params}, res) => {
 
 
 
-const updateProductCtrl = (req, res) => {
+const updateProductCtrl = async (req, res) => {
   try {
 
-    const { body: data } = req;
+    const {form, imagesGalery, imageThumbnail, id} = req.body
+    const {
+      title,
+      subtitle,
+      price,
+      priceOffer,
+      description,  
 
-    const updateQuery = doQuery(
-      'UPDATE products SET title = ?, subtitle = ?, price = ? , price_offer = ?, descripcion_1 = ?, descripcion_2 = ?    WHERE id = ? ;',
+    } = form;
+
+    console.log(req.body)
+    const updateQuery = await doQuery(
+      'UPDATE products SET title = ?, subtitle = ?, price = ? , price_offer = ?, descripcion_1 = ?  WHERE id = ? ;',
       [
-        data.title,
-        data.subtitle,
-        data.price,
-        data.price_offer,
-        data.descripcion_1,
-        data.descripcion_2,
-        data.id,
+        title,
+        subtitle,
+        price,
+        priceOffer,
+        description,
+        id, 
       ]
     );
+ 
+    await doQuery(
+      'UPDATE products_images SET detail_images = ?, thumbnail_image = ? WHERE product_model_id = ?', //VER TABLA PHPMYADMIN
+      [imagesGalery, imageThumbnail, id]
+    )
 
+    
 
 
     res.send(updateQuery);
@@ -216,17 +229,19 @@ const getProductCtrl = async (req, res) => {
 
 const insertVariations = async (req, res) => {
   try {
-    const { product_id, table1, table2, valuesId1, valuesId2 } = req.body;
 
-    const sizesValues = valuesId1.split(','); // [15,14,13]
-    const colorsValues = valuesId2.split(','); // [2,3]
+    const { product_id, valueSizes, valueColors } = req.body;
+    console.log(req.body.valueSizes)
+
+     
+    // const sizesValues = valueSizes.split(','); // [15,14,13]
+    // const colorsValues = valueColors.split(','); // [2,3]
 
     const productModel = await doQuery('SELECT * FROM products WHERE id = ?', [
       product_id,
     ]);
 
-
-    sizesValues.forEach(async (element) => {
+    valueSizes.forEach(async (element) => {
 
       const checkingTableSizes = await doQuery(`SELECT * FROM products_sizes WHERE product_model_id = ${product_id} AND size_id = ${element} `);
 
@@ -237,7 +252,7 @@ const insertVariations = async (req, res) => {
 
     });
 
-    colorsValues.forEach(async (color) => {
+    valueColors.forEach(async (color) => {
 
       const checkingTableColors = await doQuery(
         `SELECT * FROM products_colors WHERE product_model_id = ${product_id} AND color_id = ${color} `
@@ -251,7 +266,7 @@ const insertVariations = async (req, res) => {
 
       }
 
-      sizesValues.forEach( async size =>{
+      valueSizes.forEach( async size =>{
 
         const checkingVariants = await doQuery(`SELECT * FROM products_variants WHERE product_id = ${product_id} AND size_id = ${size} AND color_id = ${color}`);
 
@@ -309,7 +324,7 @@ const getProductsVariations = async (req, res) => {
     );
 
 
-      res.json(productsVariants);
+    res.json(productsVariants);
         
     
 
