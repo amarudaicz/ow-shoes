@@ -45,7 +45,7 @@ const getVariantsByColor = async (req, res) => {
 };
 
 const getAllProducts = async(req, res)=>{
-  const products = await doQuery('SELECT products.id, title, subtitle, price, price_offer, thumbnail_image, detail_images, description_1 FROM products INNER JOIN products_images ON products_images.product_model_id = products.id')
+  const products = await doQuery('SELECT products.id, title, subtitle, price, price_offer, thumbnail_image, detail_images, descripcion_1 FROM products INNER JOIN products_images ON products_images.product_model_id = products.id')
   console.log(products)
   // // products.detail_images = JSON.parse(products.detail_images)
   products.forEach(e => {
